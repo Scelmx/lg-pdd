@@ -5,7 +5,7 @@
  * @returns 成功返回一个对象，失败返回null
  */
 const findSchemaById = (schema: object, id: string) => {
-  let result = null
+  let result: Object | null = null
   function search(tree: Array<any>, id: string) {
     for (let i = 0; i < tree.length; i++) {
       if (result) break
