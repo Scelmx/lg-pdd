@@ -6,12 +6,12 @@ For Vue 3.0.
 
 ## Project setup
 ```
-yarn install
+yarn
 ```
 
 ## Compiles and hot-reloads for development
 ```
-yarn serve
+yarn dev
 ```
 
 基于Element的低代码渲染器，开箱即用。快来试试吧。
