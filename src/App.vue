@@ -1,21 +1,23 @@
 <template>
-  <el-container class="lg-design">
-    <el-header class="lg-header__container"></el-header>
+  <section class="lg-design">
+    <TopPanel></TopPanel>
     <section class="lg-center__container">
       <LeftPanel />
       <CenterPanel :schema="schema"/>
       <RightPanel :active-schema="{ name: 'zyx' }"/>
     </section>
-  </el-container>
+  </section>
 </template>
 
 <script lang="ts">
+import TopPanel from './view/TopPanel.vue'
 import LeftPanel from './view/LeftPanel.vue'
 import CenterPanel from './view/CenterPanel.vue'
 import RightPanel from './view/RightPanel.vue'
 import { defineComponent } from 'vue'
 export default defineComponent({
   components: {
+    TopPanel,
     LeftPanel,
     CenterPanel,
     RightPanel
@@ -38,15 +40,10 @@ html,body,#app {
 .lg-design {
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.lg-header__container {
-  height: 48px;
-  border-bottom: 1px solid #000;
+  display: block;
 }
 .lg-center__container {
-  flex: 1;
+  height: 100%;
   display: flex;
   justify-content: space-between;
 }
