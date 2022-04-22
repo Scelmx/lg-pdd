@@ -8,16 +8,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "dayjs": "^1.11.1",
     "element-plus": "^2.0.2",
     "install": "^0.13.0",
-    "moment": "^2.29.1",
     "npm": "^8.5.4",
     "sass": "^1.49.8",
     "vue": "3.2.25",
     "vue-class-component": "7.0.2",
+    "vue-draggable-next": "^2.1.1",
     "vue-property-decorator": "9.1.2",
     "vue-template-compiler": "2.6.10",
-    "vuedraggable": "^2.24.3",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

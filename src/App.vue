@@ -3,16 +3,29 @@
     <el-header class="lg-header__container"></el-header>
     <section class="lg-center__container">
       <LeftPanel />
-      <CenterPanel />
+      <CenterPanel :schema="schema"/>
       <RightPanel :active-schema="{ name: 'zyx' }"/>
     </section>
   </el-container>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import LeftPanel from './view/LeftPanel.vue'
 import CenterPanel from './view/CenterPanel.vue'
 import RightPanel from './view/RightPanel.vue'
+import { defineComponent } from 'vue'
+export default defineComponent({
+  components: {
+    LeftPanel,
+    CenterPanel,
+    RightPanel
+  },
+  data() {
+    return {
+      schema: { type: 'page', name: 'page', children: [] }
+    }
+  }
+})
 </script>
 
 <style>

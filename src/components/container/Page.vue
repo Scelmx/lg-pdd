@@ -1,35 +1,35 @@
 <template>
-    <draggable group="lgDraggable" class="lg-page">
-        <component v-for="(item, index) of schema.children" :key="index" :is="item.type" :schema="item"/>
-    </draggable>
+    <Renderer :attrs="attrs" :schema="schema"></Renderer>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import button from '../basic/button.vue'
-import input from '../basic/input.vue'
-import text from '../basic/text.vue'
-import form from './Form.vue'
+import Renderer from '../Renderer.vue'
 
 export default defineComponent({
     components: {
-        button,
-        input,
-        text,
-        form
-    },
-    setup() {
-        
+        Renderer
     },
     props: {
         schema: {
             type: Object,
             default: {}
         }
+    },
+    created() {
+        console.log(this.schema, '??')
+    },
+    computed: {
+        attrs() {
+            return { tag: 'div', className: 'lg-page' }
+        }
     }
 })
 </script>
 
 <style scoped>
-
+.lg-page {
+    min-height: 300px;
+    height: 100%;
+}
 </style>

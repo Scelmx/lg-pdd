@@ -55,3 +55,9 @@ const changeSchemaById = (schema: object, target: { id: string }): void => {
 const createId = () => {
   return Math.random().toString(36).split('.')[1]
 }
+
+export default {
+  createId,
+  findSchemaById,
+  changeSchemaById
+}
