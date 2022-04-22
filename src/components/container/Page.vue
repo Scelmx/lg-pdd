@@ -28,8 +28,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.lg-page {
-    min-height: 300px;
-    height: 100%;
-}
 </style>

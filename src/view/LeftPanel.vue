@@ -37,6 +37,7 @@ export default defineComponent({
     methods: {
       clone(target: any) {
         const data = Object.assign(target.config, { id: utils.createId() })
+        return data
       }
     }
 })
