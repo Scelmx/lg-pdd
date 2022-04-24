@@ -18,6 +18,9 @@ import button from "./basic/button.vue";
 import input from "./basic/input.vue";
 import text from "./basic/text.vue";
 import empty from "./complex/empty.vue";
+import table from "./complex/table.vue";
+import result from "./complex/result.vue";
+import steps from "./complex/steps.vue";
 
 export default defineComponent({
   components: {
@@ -26,6 +29,9 @@ export default defineComponent({
     input,
     empty,
     text,
+    table,
+    result,
+    steps
   },
   props: {
     attrs: { type: Object, default: () => {} },

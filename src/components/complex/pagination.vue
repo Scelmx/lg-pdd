@@ -1,5 +1,5 @@
 <template>
-  <el-result :icon="schema.icon" :title="schema.title" :sub-title="schema.subTitle"></el-result>
+  <el-pagination></el-pagination>
 </template>
 
 <script lang="ts">

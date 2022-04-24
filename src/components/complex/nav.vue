@@ -1,5 +1,8 @@
 <template>
-  <el-result :icon="schema.icon" :title="schema.title" :sub-title="schema.subTitle"></el-result>
+  <el-menu
+    :mode="schema.mode"
+  >
+  </el-menu>
 </template>
 
 <script lang="ts">

@@ -3,7 +3,8 @@ export default {
   config: {
     type: 'card',
     title: '标题',
-    body: [],
-    bindAction: []
+    bodyStyle: {},
+    shadow: '',
+    chirdren: []
   }
 }

@@ -3,6 +3,5 @@ export default {
   config: {
     type: 'pagination',
     name: 'pagonation',
-    bindAction: []
   }
 }
