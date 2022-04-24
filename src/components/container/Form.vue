@@ -10,9 +10,6 @@ export default defineComponent({
     components: {
         Renderer
     },
-    setup() {
-        
-    },
     props: {
         schema: {
             type: Object,
@@ -23,6 +20,9 @@ export default defineComponent({
         attrs() {
             return { tag: 'el-form' }
         }
+    },
+    created() {
+        console.log(123456)
     }
 })
 </script>

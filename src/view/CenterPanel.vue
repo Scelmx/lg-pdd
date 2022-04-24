@@ -18,26 +18,27 @@ export default defineComponent({
           {
             type: "form",
             name: "form",
-            children: [],
-          },
-          {
-            type: "text",
-            name: "text",
-            text: "按钮",
-            label: "xx",
-            href: "",
-          },
-          {
-            type: "button",
-            name: "button",
-            text: "按钮",
-            label: "xx",
-          },
-          {
-            type: "input",
-            name: "input",
-            text: "输入框",
-            label: "xx",
+            children: [
+              {
+                type: "text",
+                name: "text",
+                text: "按钮",
+                label: "xx",
+                href: "",
+              },
+              {
+                type: "button",
+                name: "button",
+                text: "按钮",
+                label: "xx",
+              },
+              {
+                type: "input",
+                name: "input",
+                text: "输入框",
+                label: "xx",
+              },
+            ],
           },
         ],
       },

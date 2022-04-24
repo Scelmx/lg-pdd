@@ -7,7 +7,7 @@ import nav from './nav';
 import result from './result';
 import empty from './empty';
 
-export const complexComConfig = {
-  title: '高级组件',
+export default {
+  name: '高级组件',
   list: [table, pagination, tabs, card, steps, nav, result, empty]
 }

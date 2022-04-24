@@ -11,7 +11,7 @@ import tag from "./tag";
 import time from "./time"
 import upload from "./upload";
 
-export const complexComConfig = {
-  title: '高级组件',
+export default {
+  name: '高级组件',
   list: [cascader, select, date, dateTime, image, progress, radio, slider, checkbox, tag, time, upload]
 }

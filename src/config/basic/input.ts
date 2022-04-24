@@ -1,5 +1,5 @@
 export default {
-    name: "輸入框",
+    name: "输入框",
     config: {
         name: "input",
         type: "input",

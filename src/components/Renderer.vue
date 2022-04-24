@@ -16,12 +16,16 @@ import { defineComponent } from "vue";
 import { VueDraggableNext } from "vue-draggable-next";
 import button from "./basic/button.vue";
 import input from "./basic/input.vue";
+import text from "./basic/text.vue";
+import empty from "./complex/empty.vue";
 
 export default defineComponent({
   components: {
     draggable: VueDraggableNext,
     button,
     input,
+    empty,
+    text,
   },
   props: {
     attrs: { type: Object, default: () => {} },
