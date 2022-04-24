@@ -21,6 +21,7 @@ import empty from "./complex/empty.vue";
 import table from "./complex/table.vue";
 import result from "./complex/result.vue";
 import steps from "./complex/steps.vue";
+import breadcrumb from "./complex/breadcrumb.vue";
 
 export default defineComponent({
   components: {
@@ -31,7 +32,8 @@ export default defineComponent({
     text,
     table,
     result,
-    steps
+    steps,
+    breadcrumb
   },
   props: {
     attrs: { type: Object, default: () => {} },
