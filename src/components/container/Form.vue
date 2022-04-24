@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import Renderer from '../Renderer.vue'
+import { defineComponent } from "vue"
+import Renderer from "../Renderer.vue"
 
 export default defineComponent({
     components: {
@@ -18,7 +18,7 @@ export default defineComponent({
     },
     computed: {
         attrs() {
-            return { tag: 'el-form' }
+            return { tag: "el-form", className: "lg-form" }
         }
     },
     created() {
@@ -28,8 +28,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.lg-page {
-    min-height: 300px;
-    height: 100%;
+.lg-form {
+    height: auto;
+    width: 100%;
+    display: inline-block;
 }
 </style>
