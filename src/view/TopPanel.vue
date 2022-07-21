@@ -1,9 +1,9 @@
 <template>
   <el-header class="lg-pdd_header">
     <div class="lg-pdd_header-left">
-      <el-button type="text" icon="" @click="backOff">x</el-button>
-      <el-button type="text" icon="" @click="forward">√</el-button>
-      <el-button type="text" icon="" @click="save">保存</el-button>
+      <el-button type="text" icon @click="backOff">x</el-button>
+      <el-button type="text" icon @click="forward">√</el-button>
+      <el-button type="text" icon @click="save">保存</el-button>
     </div>
     <div class="lg-pdd_header-right">
       <el-button type="primary" @click="preview">预览</el-button>
@@ -13,26 +13,36 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import Design from "../utils/analyze";
 
 export default defineComponent({
   methods: {
     // 后退
-    backOff() {
-
-    },
+    backOff() {},
     // 前进
-    forward() {
-
-    },
+    forward() {},
     // 保存
     save() {
-
+      const test = {
+        type: "Group",
+        id: "",
+        class: "lg-pdd_page",
+        layers: [
+          {
+            type: "Group",
+            id: "",
+            class: "lg-pdd_group",
+            layers: [{ type: "Text", id: "", class: "lg-pdd_text", text: "" }],
+          },
+          { type: "Text", id: "", class: "lg-pdd_text", text: "" },
+        ],
+      };
+      const res = new Design(test);
+      console.log(res.analyzeDesign().getCode("vue"), "asdzzs");
     },
     // 预览
-    preview() {
-      
-    }
-  }
+    preview() {},
+  },
 });
 </script>
 
@@ -43,7 +53,8 @@ export default defineComponent({
   justify-content: space-between;
   box-shadow: 0px 0px 16px #6c6b6b;
 }
-.lg-pdd_header-left, .lg-pdd_header-right {
+.lg-pdd_header-left,
+.lg-pdd_header-right {
   display: inline-block;
   line-height: 48px;
 }

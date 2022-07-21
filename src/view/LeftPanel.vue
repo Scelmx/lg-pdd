@@ -1,17 +1,22 @@
 <template>
   <el-aside class="lg-design__left">
-    <div v-for="(config, allIndex) of list" :key="allIndex">
-      <draggable
-        class="lg-drag__list"
-        :list="config.list"
-        :group="{ name: 'lgDraggable', pull: 'clone', put: false }"
-        :clone="clone"
-        draggable=".lg-item"
-        :sort="false"
-      >
-        <el-button v-for="(item, index) of config.list" :key="index" size="small" class="lg-item">{{ item.name }}</el-button>
-      </draggable>
-    </div>
+    <template v-if="false">
+      <div v-for="(config, allIndex) of list" :key="allIndex">
+        <draggable
+          class="lg-drag__list"
+          :list="config.list"
+          :group="{ name: 'lgDraggable', pull: 'clone', put: false }"
+          :clone="clone"
+          draggable=".lg-item"
+          :sort="false"
+        >
+          <el-button v-for="(item, index) of config.list" :key="index" size="small" class="lg-item">{{ item.name }}</el-button>
+        </draggable>
+      </div>
+    </template>
+    <template v-if="true">
+      <code-editor></code-editor>
+    </template>
   </el-aside>
 </template>
 
@@ -20,10 +25,12 @@ import { defineComponent } from "vue";
 import { VueDraggableNext } from 'vue-draggable-next'
 import allConfig from "../config/index";
 import utils from "../utils/utils"
+import codeEditor from "../components/codeEditor/index.vue"
 
 export default defineComponent({
     components: {
-      draggable: VueDraggableNext
+      draggable: VueDraggableNext,
+      codeEditor
     },
     setup(props: any) {
     },

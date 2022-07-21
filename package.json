@@ -10,7 +10,9 @@
   "dependencies": {
     "dayjs": "^1.11.1",
     "element-plus": "^2.0.2",
+    "gogocode": "^1.0.54",
     "install": "^0.13.0",
+    "monaco-editor": "^0.33.0",
     "npm": "^8.5.4",
     "sass": "^1.49.8",
     "vue": "3.2.25",
