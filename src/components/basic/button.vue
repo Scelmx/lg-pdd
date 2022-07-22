@@ -1,5 +1,5 @@
 <template>
-    <div class="lg-button">
+    <div class="lg-item lg-button">
         <el-button>{{schema.text}}</el-button>
     </div>
 </template>

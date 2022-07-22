@@ -1,6 +1,6 @@
 <template>
-  <div class="lg-design__center">
-    <LgRender :schema="schema" :actions="[]" />
+  <div class="lg-design__center" @click="setActive">
+    <LgRender :schema="schema" :actions="[]" class="lg-pdd__page" />
   </div>
 </template>
 
@@ -51,6 +51,22 @@ export default defineComponent({
   setup(props: any) {
     console.log("center-panel", props.schema);
   },
+  methods: {
+    componentNode() {
+      const renderNode = this.$el.querySelector('.lg-pdd__page')
+      if (renderNode) {
+        return renderNode.querySelectorAll('.lg-item') || []
+      }
+      return []
+    },
+
+    setActive(e: any) {
+      const activeClass = "lg-item--active"
+      const node: any = e.target
+      node.classList.add(activeClass)
+    },
+
+  }
 });
 const dragOptions = computed(() => {
   return { group: { name: "lg-draggable" } };
@@ -63,5 +79,8 @@ const dragOptions = computed(() => {
   flex: 1;
   height: 100%;
   background: #ccc;
+}
+.lg-pdd--active {
+  border: 1px #ac1bc4 solid;
 }
 </style>

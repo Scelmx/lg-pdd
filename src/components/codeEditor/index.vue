@@ -3,36 +3,61 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue"
-import * as monaco from 'monaco-editor'
+import { defineComponent } from "vue";
+import * as monaco from "monaco-editor";
 
+let codeEditor: any = undefined
 export default defineComponent({
-  data() {
-    return {
-      editor: {}
+  props: {
+    codeStr: {
+      type: String,
+    },
+    options: {
+      type: Object
     }
   },
+  data() {
+    return {
+      
+    };
+  },
   computed: {
-    options() {
+    config() {
       return {
-        theme: 'vs-dark'
+        language: "json",
+        automaticLayout: true,
+        tabSize: 2,
+        overviewRulerBorder: false,
+        scrollBeyondLastLine: false,
+        minimap: {
+          enabled: false, // 不要小地图
+        },
+        theme: "vs",
+      };
+    },
+  },
+  watch: {
+    codeStr(oldStr: string, newStr: string) {
+      if (oldStr !== newStr) {
+        codeEditor.setValue(this.codeStr)
       }
     }
   },
   mounted() {
-    this.init()
+    this.init();
+    // codeEditor.getAction('editor.action.formatDocument').run()
   },
   methods: {
     init() {
-      const codeNode = <HTMLElement>this.$refs.codeEditor
-      this.editor = monaco.editor.create(codeNode, {
-        ...this.options,
-        model: null,
-      })
-    }
-  }
-
-})
+      const codeNode = <HTMLElement>this.$refs.codeEditor;
+      codeEditor = monaco.editor.create(codeNode, {
+        ...Object.assign(this.config, this.options),
+        value: this.codeStr,
+      });
+      this.$emit("init-editor", codeEditor, monaco);
+    },
+  },
+});
 </script>
 
 <style scoped>

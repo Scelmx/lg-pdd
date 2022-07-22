@@ -1,6 +1,6 @@
 <template>
   <el-aside class="lg-design__left">
-    <template v-if="false">
+    <template v-if="true">
       <div v-for="(config, allIndex) of list" :key="allIndex">
         <draggable
           class="lg-drag__list"
@@ -14,8 +14,8 @@
         </draggable>
       </div>
     </template>
-    <template v-if="true">
-      <code-editor></code-editor>
+    <template v-if="false">
+      <!-- <code-editor></code-editor> -->
     </template>
   </el-aside>
 </template>

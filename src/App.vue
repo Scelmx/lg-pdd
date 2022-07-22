@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import TopPanel from './view/TopPanel.vue'
+import TopPanel from './view/header/TopPanel.vue'
 import LeftPanel from './view/LeftPanel.vue'
 import CenterPanel from './view/CenterPanel.vue'
 import RightPanel from './view/RightPanel.vue'
