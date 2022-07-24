@@ -1,6 +1,6 @@
 <template>
   <el-aside class="lg-design__left">
-    <template v-if="false">
+    <template v-if="true">
       <div v-for="(config, allIndex) of list" :key="allIndex">
         <draggable
           class="lg-drag__list"
@@ -14,8 +14,7 @@
         </draggable>
       </div>
     </template>
-    <template v-if="true">
-      <code-editor></code-editor>
+    <template v-if="false">
     </template>
   </el-aside>
 </template>
@@ -25,12 +24,10 @@ import { defineComponent } from "vue";
 import { VueDraggableNext } from 'vue-draggable-next'
 import allConfig from "../config/index";
 import utils from "../utils/utils"
-import codeEditor from "../components/codeEditor/index.vue"
 
 export default defineComponent({
     components: {
-      draggable: VueDraggableNext,
-      codeEditor
+      draggable: VueDraggableNext
     },
     setup(props: any) {
     },
