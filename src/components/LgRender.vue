@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import page from './container/Page.vue'
+import page from './container/page.vue'
 
 export default defineComponent({
     components: {

@@ -1,5 +1,5 @@
 <template>
-    <div class="lg-input">
+    <div class="lg-item lg-input">
         <label v-if="!schema.formItem" :for="schema.name">{{schema.label}}</label>
         <el-input :name="schema.name">{{schema.text}}</el-input>
     </div>

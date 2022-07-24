@@ -1,6 +1,6 @@
 <template>
   <div class="lg-design__center">
-    <LgRender :schema="schema" :actions="[]" />
+    <LgRender :schema="schema" :actions="[]" class="lg-canvas"/>
   </div>
 </template>
 
@@ -57,11 +57,15 @@ const dragOptions = computed(() => {
 });
 </script>
 
-<style scoped>
+<style>
 .lg-design__center {
   border: 1px solid #000;
   flex: 1;
   height: 100%;
   background: #ccc;
+}
+.lg-canvas .lg-item > * {
+  pointer-events: none;
+  cursor: pointer;
 }
 </style>
