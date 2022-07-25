@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // const {
 //   v4: uuidv4
 // } = require('uuid');
@@ -484,3 +485,19 @@
 //   }
 // };
 // export default tools;
+=======
+const components: any[] = []
+
+function Assembly(name: string) {
+    console.log(123, 'xxx');
+    return function (target: Function) {
+        register(name, target)
+    };
+}
+
+function register(name: string, target: any) {
+    console.log(target, name);
+}
+
+export { Assembly }
+>>>>>>> 2a34398bb497a2ac3afa05e001c664b09743e0f8

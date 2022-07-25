@@ -1,6 +1,6 @@
 <template>
-  <div class="lg-design__center" @click="setActive">
-    <LgRender :schema="schema" :actions="[]" class="lg-pdd__page" />
+  <div class="lg-design__center">
+    <LgRender :schema="schema" :actions="[]" class="lg-canvas"/>
   </div>
 </template>
 
@@ -73,7 +73,7 @@ const dragOptions = computed(() => {
 });
 </script>
 
-<style scoped>
+<style>
 .lg-design__center {
   border: 1px solid #000;
   flex: 1;
@@ -82,5 +82,9 @@ const dragOptions = computed(() => {
 }
 .lg-pdd--active {
   border: 1px #ac1bc4 solid;
+}
+.lg-canvas .lg-item > * {
+  pointer-events: none;
+  cursor: pointer;
 }
 </style>

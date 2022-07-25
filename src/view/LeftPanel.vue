@@ -7,10 +7,10 @@
           :list="config.list"
           :group="{ name: 'lgDraggable', pull: 'clone', put: false }"
           :clone="clone"
-          draggable=".lg-item"
+          draggable=".lg-component"
           :sort="false"
         >
-          <el-button v-for="(item, index) of config.list" :key="index" size="small" class="lg-item">{{ item.name }}</el-button>
+          <el-button v-for="(item, index) of config.list" :key="index" size="small" class="lg-component">{{ item.name }}</el-button>
         </draggable>
       </div>
     </template>
@@ -25,12 +25,10 @@ import { defineComponent } from "vue";
 import { VueDraggableNext } from 'vue-draggable-next'
 import allConfig from "../config/index";
 import utils from "../utils/utils"
-import codeEditor from "../components/codeEditor/index.vue"
 
 export default defineComponent({
     components: {
-      draggable: VueDraggableNext,
-      codeEditor
+      draggable: VueDraggableNext
     },
     setup(props: any) {
     },
@@ -52,7 +50,23 @@ export default defineComponent({
 </script>
 
 <style>
-.lg-design__left {
-  flex: .2;
-} 
+.lg-design__left.el-aside {
+  width: 240px;
+  padding: 20px 16px;
+  padding-left: 56px;
+}
+.lg-drag__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.lg-drag__list > .lg-component {
+  width: 80px;
+  margin-top: 8px;
+}
+.lg-drag__list > .lg-component + .lg-component,
+.el-button+.el-button {
+  margin-left: 0px;
+}
 </style>

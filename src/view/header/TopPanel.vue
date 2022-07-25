@@ -34,22 +34,6 @@ export default defineComponent({
     forward() {},
     // 保存
     save() {
-      const test = {
-        type: "Group",
-        id: "",
-        class: "lg-pdd_page",
-        layers: [
-          {
-            type: "Group",
-            id: "",
-            class: "lg-pdd_group",
-            layers: [{ type: "Text", id: "", class: "lg-pdd_text", text: "" }],
-          },
-          { type: "Text", id: "", class: "lg-pdd_text", text: "" },
-        ],
-      };
-      const res = new Design(test);
-      console.log(res.analyzeDesign().getCode("vue"), "asdzzs");
     },
     // 预览
     preview() {},

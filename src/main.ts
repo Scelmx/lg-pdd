@@ -1,11 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import ElementPlus from 'element-plus'
-import Page from './components/container/Page.vue'
-import Form from './components/container/Form.vue'
 import 'element-plus/dist/index.css'
+import ContainerWidgets from './components/index'
 
 const app = createApp(App)
-app.component('Page', Page)
-app.component('Form', Form)
+app.use(ContainerWidgets)
 app.use(ElementPlus).mount('#app')

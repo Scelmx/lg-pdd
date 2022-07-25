@@ -14,26 +14,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { VueDraggableNext } from "vue-draggable-next";
-import button from "./basic/button.vue";
-import input from "./basic/input.vue";
-import text from "./basic/text.vue";
-import empty from "./complex/empty.vue";
-import table from "./complex/table.vue";
-import result from "./complex/result.vue";
-import steps from "./complex/steps.vue";
-import breadcrumb from "./complex/breadcrumb.vue";
 
 export default defineComponent({
   components: {
     draggable: VueDraggableNext,
-    button,
-    input,
-    empty,
-    text,
-    table,
-    result,
-    steps,
-    breadcrumb
   },
   props: {
     attrs: { type: Object, default: () => {} },
@@ -43,7 +27,7 @@ export default defineComponent({
     className() {
       return `${this.attrs.className || ""} ${
         this.schema.className || ""
-      } lg-container lg-item`;
+      } lg-container ${('page', 'form').includes(this.attrs.type) ? 'lg-item' : ''}`;
     },
   },
   methods: {},

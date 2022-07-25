@@ -1,5 +1,5 @@
 import $ from 'gogocode';
-import getConfig from './config'
+import getConfig from './config';
 
 class Design {
   html: string;

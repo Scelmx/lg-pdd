@@ -15,6 +15,7 @@ import LeftPanel from './view/LeftPanel.vue'
 import CenterPanel from './view/CenterPanel.vue'
 import RightPanel from './view/right/RightPanel.vue'
 import { defineComponent } from 'vue'
+
 export default defineComponent({
   components: {
     TopPanel,
