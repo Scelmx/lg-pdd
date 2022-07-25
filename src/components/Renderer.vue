@@ -5,7 +5,7 @@
       :key="index"
       :is="item.type"
       :schema="item"
-      class="lg-item"
+      :class="['page', 'form'].includes(this.schema.type) ? '' : 'lg-item'"
       :data-id="item.id"
     />
   </draggable>
@@ -27,7 +27,7 @@ export default defineComponent({
     className() {
       return `${this.attrs.className || ""} ${
         this.schema.className || ""
-      } lg-container ${('page', 'form').includes(this.attrs.type) ? 'lg-item' : ''}`;
+      } lg-container ${['page', 'form'].includes(this.schema.type) ? '' : 'lg-item'}`;
     },
   },
   methods: {},

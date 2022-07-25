@@ -1,9 +1,9 @@
 <template>
   <section class="lg-design">
-    <TopPanel></TopPanel>
+    <TopPanel @save="saveSchema"></TopPanel>
     <section class="lg-center__container">
       <LeftPanel />
-      <CenterPanel :schema="schema"/>
+      <CenterPanel :schema="schema" @active-change="activeTargetChange"/>
       <RightPanel :active-schema="{ name: 'zyx' }"/>
     </section>
   </section>
@@ -14,7 +14,8 @@ import TopPanel from './view/header/TopPanel.vue'
 import LeftPanel from './view/LeftPanel.vue'
 import CenterPanel from './view/CenterPanel.vue'
 import RightPanel from './view/right/RightPanel.vue'
-import { defineComponent } from 'vue'
+import { defineComponent, toRaw } from 'vue'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   components: {
@@ -25,7 +26,23 @@ export default defineComponent({
   },
   data() {
     return {
-      schema: { type: 'page', name: 'page', children: [] }
+      schema: { type: 'page', name: 'page', children: [] },
+    }
+  },
+  computed: {
+    rootStore() {
+      return useStore()
+    }
+  },
+  methods: {
+    saveSchema() {
+      const config = toRaw(this.schema)
+      window.localStorage.setItem("schema", JSON.stringify(config))
+    },
+    activeTargetChange(id: string) {
+      // 直接存入store处理
+      this.rootStore.dispatch('setActiveId', id)
+      console.log(this.rootStore.state.schemaStore.state, '----')
     }
   }
 })

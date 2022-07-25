@@ -1,6 +1,6 @@
 <template>
-  <div class="lg-design__center">
-    <LgRender :schema="schema" :actions="[]" class="lg-canvas"/>
+  <div class="lg-design__center" @click="setActive">
+    <LgRender :schema="schema" :actions="[]"/>
   </div>
 </template>
 
@@ -47,25 +47,36 @@ export default defineComponent({
   components: {
     LgRender,
   },
-  computed: {},
+  computed: {
+    getSchema() {
+      return this.schema || {}
+    }
+  },
   setup(props: any) {
     console.log("center-panel", props.schema);
   },
   methods: {
     componentNode() {
-      const renderNode = this.$el.querySelector('.lg-pdd__page')
+      const renderNode = this.$el.querySelector('.lg-design__center .lg-canvas')
       if (renderNode) {
         return renderNode.querySelectorAll('.lg-item') || []
       }
       return []
     },
-
     setActive(e: any) {
       const activeClass = "lg-item--active"
       const node: any = e.target
+      this.clearActive(activeClass)
       node.classList.add(activeClass)
+      const active = node.getAttribute('data-id')
+      this.$emit("activeChange", active)
     },
-
+    clearActive(className: string) {
+      const nodeList = this.componentNode()
+      for (let node of nodeList) {
+        node.classList.remove(className)
+      }
+    }
   }
 });
 const dragOptions = computed(() => {
@@ -80,11 +91,22 @@ const dragOptions = computed(() => {
   height: 100%;
   background: #ccc;
 }
-.lg-pdd--active {
-  border: 1px #ac1bc4 solid;
+.lg-canvas {
+  height: 100%;
 }
+/* .lg-page .lg-item */
+.lg-canvas .lg-item  {
+  cursor: pointer;
+}
+/* .lg-page .lg-item > * */
 .lg-canvas .lg-item > * {
   pointer-events: none;
-  cursor: pointer;
+}
+.lg-canvas .lg-item.lg-item--active {
+  border: 1px #ac1bc4 solid;
+}
+.lg-design__center > .lg-canvas .lg-page {
+  min-height: 100%;
+  height: 100%;
 }
 </style>

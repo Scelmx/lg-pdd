@@ -27,20 +27,9 @@ const props = defineProps({
 });
 let editor: any = undefined
 const schema = computed(() => {
-  return {
-    type: "Group",
-    id: "",
-    class: "lg-pdd_page",
-    layers: [
-      {
-        type: "Group",
-        id: "",
-        class: "lg-pdd_group",
-        layers: [{ type: "Text", id: "", class: "lg-pdd_text", text: "" }],
-      },
-      { type: "Text", id: "", class: "lg-pdd_text", text: "" },
-    ],
-  }
+  const res: string = window.localStorage.getItem("schema") || ''
+  const config = JSON.parse(res);
+  return config || {}
 });
 const design = new Design(schema.value);
 const exportType = ref("html");

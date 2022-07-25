@@ -34,6 +34,7 @@ export default defineComponent({
     forward() {},
     // 保存
     save() {
+      this.$emit('save')
     },
     // 预览
     preview() {},

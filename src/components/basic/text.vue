@@ -1,5 +1,5 @@
 <template>
-    <div class="lg-input">
+    <div class="lg-item lg-input">
         <label v-if="!schema.formItem" :for="schema.name">{{schema.label}}</label>
         <a v-if="isA" :href="schema.href">{{schema.text}}</a>
         <text v-else>{{schema.text}}</text>
