@@ -1,30 +1,33 @@
 <template>
-  <el-container>
+  <el-container class="lg-style">
     <el-form>
-      <el-form-item
-        v-for="(attr, index) of Object.keys(details)"
-        :key="index"
-        :label="details[attr].label"
-      >
-        <el-input v-if="['input', 'textarea'].includes(details[attr].type)"></el-input>
+      <template v-for="(attr, index) of Object.keys(details)">
+        <el-form-item
+          v-if="details[attr]"
+          :key="index"
+          :label="details[attr].label"
+        >
+          <el-input v-if="['input', 'textarea'].includes(details[attr].type)" v-model="props.schema[attr]"></el-input>
 
-        <el-input-number v-if="details[attr].type === 'number'" @change="handleChange" />
+          <el-input-number v-if="details[attr].type === 'number'" v-model="props.schema[attr]" @change="handleChange" />
 
-        <el-select v-if="details[attr].type === 'select'">
-          <el-option
-            v-for="(opt, optIndex) of details[attr].options"
-            :key="optIndex"
-            :label="opt.label"
-            :value="opt.value"
-          ></el-option>
-        </el-select>
-      </el-form-item>
+          <el-select v-if="details[attr].type === 'select'" v-model="props.schema[attr]">
+            <el-option
+              v-for="(opt, optIndex) of details[attr].options"
+              :key="optIndex"
+              :label="opt.label"
+              :value="opt.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+      </template>
     </el-form>
   </el-container>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
+import { getAttr } from "../mixins/viewIterator";
 
 const props = defineProps({
   schema: {
@@ -32,13 +35,8 @@ const props = defineProps({
     require: true,
   },
 });
-const details = computed(() => {
-  return {
-    name: {
-      label: "xxx",
-      type: "number",
-    },
-  };
+const details: any = computed(() => {
+  return getAttr(props.schema)
 });
 </script>
 

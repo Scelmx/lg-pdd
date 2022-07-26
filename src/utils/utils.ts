@@ -4,7 +4,7 @@
  * @param id 需要查找的id
  * @returns 成功返回一个对象，失败返回null
  */
-const findSchemaById = (schema: object, id: string) => {
+const findSchemaById = (schema: object, id: string): any => {
   let result: Object | null = null
   function search(tree: Array<any>, id: string) {
     for (let i = 0; i < tree.length; i++) {

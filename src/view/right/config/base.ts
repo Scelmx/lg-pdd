@@ -12,6 +12,10 @@ const attrBase = {
   labelWidth: {
     label: "标签宽度",
     type: "input",
+  },
+  text: {
+    label: '文本',
+    type: 'input'
   }
 }
 
@@ -40,4 +44,4 @@ const styleBase = {
   }
 }
 
-export default { attrBase, styleBase }
+export { attrBase, styleBase }

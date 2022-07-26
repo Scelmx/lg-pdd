@@ -38,8 +38,6 @@ class Design {
   }
 
   public parseToCode(type: string = "html") {
-    console.log(type, 'xxx');
-    
     switch(type) {
       case "html": return this.html;
       case "vue": return this.transferCode('vue');

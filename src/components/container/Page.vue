@@ -17,7 +17,6 @@ export default defineComponent({
         }
     },
     created() {
-        console.log(this.schema, '??')
     },
     computed: {
         attrs() {

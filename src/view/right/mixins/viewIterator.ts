@@ -1,4 +1,4 @@
-import { attrBase, styleBase } from './config/base';
+import { attrBase, styleBase } from '../config/base';
 function getAttr(schema: any) {
   return getConfigByAttr(schema, attrBase);
 }
@@ -11,7 +11,11 @@ function getConfigByAttr(schema: any, config: any) {
   const keys = Object.keys(schema);
   let attrs: any = {};
   keys.forEach((key) => {
-    attrs[key] = config[key]
+    if (config[key]) {
+      attrs[key] = config[key]
+    }
   });
   return attrs
 }
+
+export { getAttr, getStyle }

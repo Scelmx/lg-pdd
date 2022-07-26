@@ -19,7 +19,6 @@ export default defineComponent({
         }
     },
     setup(props: any) {
-        console.log(props.schema)
     },
     computed: {
         

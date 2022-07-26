@@ -2,12 +2,13 @@
 
 <template>
   <el-aside class="lg-design__right">
+    <div>{{ activeSchema.type }}</div>
     <el-tabs v-model="tabName" class="lg-tabs">
       <el-tab-pane label="属性" value="attr">
-        <Attr></Attr>
+        <Attr :schema="activeSchema"></Attr>
       </el-tab-pane>
       <el-tab-pane label="样式" value="style">
-        <Style></Style>
+        <Style :schema="activeSchema"></Style>
       </el-tab-pane>
       <el-tab-pane label="事件" value="event">
         <Events></Events>
@@ -17,18 +18,18 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { computed, toRaw } from "vue";
 import Attr from "./components/attr.vue";
 import Style from "./components/style.vue";
 import Events from "./components/event.vue";
+import { useStore } from "vuex";
 
-const active = undefined;
-const props = defineProps({
-  activeSchema: {
-    type: Object,
-    default: undefined,
-  },
-});
+const $store = useStore()
+const $schemaStore = $store.state.schemaStore
+const activeSchema = computed(() => {
+  return toRaw($schemaStore.activeSchema) || {}
+})
+
 </script>
 
 <style scoped>

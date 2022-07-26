@@ -52,9 +52,6 @@ export default defineComponent({
       return this.schema || {}
     }
   },
-  setup(props: any) {
-    console.log("center-panel", props.schema);
-  },
   methods: {
     componentNode() {
       const renderNode = this.$el.querySelector('.lg-design__center .lg-canvas')
