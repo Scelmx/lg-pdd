@@ -7,11 +7,26 @@
     @close="closeDraw"
   >
     <div class="draw-content">
-      <el-select v-model="exportType" @change="changeExportType">
-        <el-option label="html" value="html"></el-option>
-        <el-option label="vue" value="vue"></el-option>
-        <el-option label="react" value="react"></el-option>
-      </el-select>
+      <el-form label-width="40px">
+        <el-form-item label="框架">
+          <el-select v-model="exportType">
+            <el-option label="html" value="html"></el-option>
+            <el-option label="vue" value="vue"></el-option>
+            <el-option label="react" value="react"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="UI">
+          <el-select v-model="exportUi">
+            <el-option label="无" value=""></el-option>
+            <el-option label="ElementUI" value="elementUI"></el-option>
+            <el-option label="Vant" value="Vant"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="generateCode">确定</el-button>
+          <el-button type="text" @click="download"></el-button>
+        </el-form-item>
+      </el-form>
     </div>
     <CodeEditor :code-str="code" :options="options" @init-editor="initEditor"></CodeEditor>
   </el-drawer>
@@ -35,15 +50,20 @@ const schema = computed(() => {
 });
 const design = new Design(schema.value);
 const exportType = ref("html");
+const exportUi = ref("");
 const code = ref(design.analyzeDesign().getCode(exportType.value));
 const options = computed(() => {
   return { language: exportType.value }
 })
 const $emit = defineEmits(["close"]);
 
-const changeExportType = () => {
-  const res: string = design.analyzeDesign().getCode(exportType.value)
+const generateCode = () => {
+  const res: string = design.analyzeDesign().getCode(exportType.value, exportUi.value)
   code.value = res
+}
+
+const download = () => {
+  // 请求接口
 }
 
 const initEditor = (codeEditor: any, monaco: any) => {

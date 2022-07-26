@@ -8,13 +8,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "dart-sass": "^1.25.0",
     "dayjs": "^1.11.1",
     "element-plus": "^2.0.2",
     "gogocode": "^1.0.54",
     "install": "^0.13.0",
     "monaco-editor": "^0.33.0",
     "npm": "^8.5.4",
-    "sass": "^1.49.8",
+    "sass": "^1.54.0",
+    "sass-loader": "^13.0.2",
     "vue": "3.2.25",
     "vue-class-component": "7.0.2",
     "vue-draggable-next": "^2.1.1",

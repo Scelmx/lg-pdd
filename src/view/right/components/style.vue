@@ -19,6 +19,8 @@
               :value="opt.value"
             ></el-option>
           </el-select>
+
+          <Rect v-if="details[attr].type==='rect'" @set-distans="setDistans"></Rect>
         </el-form-item>
       </template>
     </el-form>
@@ -27,7 +29,9 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { getAttr } from "../mixins/viewIterator";
+import schema from "../../../store/modules/schema";
+import { getStyle } from "../mixins/viewIterator";
+import Rect from "./rect.vue"
 
 const props = defineProps({
   schema: {
@@ -36,8 +40,12 @@ const props = defineProps({
   },
 });
 const details: any = computed(() => {
-  return getAttr(props.schema)
+  return getStyle(props.schema)
 });
+
+const setDistans = (key: string, value: string) => {
+  
+}
 </script>
 
 <style scoped>

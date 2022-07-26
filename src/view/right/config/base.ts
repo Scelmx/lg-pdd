@@ -41,7 +41,19 @@ const styleBase = {
     label: "字体粗细",
     type: "select",
     options: []
-  }
+  },
+  padding: {
+    label: "内边距",
+    type: "rect"
+  },
+  margin: {
+    label: "外边距",
+    type: "rect"
+  },
+  childMargin: {
+    label: "子项边距",
+    type: "rect"
+  },
 }
 
 export { attrBase, styleBase }

@@ -20,7 +20,7 @@ export default defineComponent({
     },
     computed: {
         attrs() {
-            return { tag: 'div', className: 'lg-page' }
+            return { tag: 'div', className: 'lg-page lg-container' }
         }
     }
 })

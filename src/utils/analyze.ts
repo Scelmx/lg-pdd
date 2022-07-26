@@ -37,15 +37,15 @@ class Design {
     return html;
   }
 
-  public parseToCode(type: string = "html") {
+  public parseToCode(type: string = "html", ui: string = "") {
     switch(type) {
       case "html": return this.html;
-      case "vue": return this.transferCode('vue');
-      case "react": return this.transferCode('react');
+      case "vue": return this.transferCode('vue', ui);
+      case "react": return this.transferCode('react', ui);
     }
   }
 
-  private transferCode(type: string) {
+  private transferCode(type: string, ui: string) {
     const aster = $(this.html, {
       parseOptions: {
         language: 'html'

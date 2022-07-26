@@ -17,6 +17,7 @@ export default {
     required: false,
     clearable: false,
     disabled: false,
+    margin: '',
     options: [
       {
         label: '选项1',

@@ -27,7 +27,7 @@ export default defineComponent({
     className() {
       return `${this.attrs.className || ""} ${
         this.schema.className || ""
-      } lg-container ${['page', 'form'].includes(this.schema.type) ? '' : 'lg-item'}`;
+      } ${['page', 'form'].includes(this.schema.type) ? '' : 'lg-item'}`;
     },
   },
   methods: {},
@@ -37,6 +37,7 @@ export default defineComponent({
 <style scoped>
 .lg-container {
   border: 1px dashed #000;
+  display: block;
 }
 .lg-container:empty {
   min-height: 80px;
