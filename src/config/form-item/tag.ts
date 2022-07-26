@@ -12,7 +12,9 @@ export default {
     effect: 'dark',
     hiddenOn: '',
     labelTips: '',
-    bindAction: []
-  },
-  attrs: {}
+    renderTag: {  //最终渲染的节点信息
+      elementUI: 'el-tag'
+    },
+    events: []
+  }
 }

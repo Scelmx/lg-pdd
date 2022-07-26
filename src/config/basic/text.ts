@@ -1,9 +1,14 @@
 export default {
-  name: "文本",
+  name: '文本',
   config: {
-      name: "text",
-      type: "text",
-      text: "文本",
-      style: {}
+    name: 'text',
+    type: 'text',
+    text: '文本',
+    renderTag: {
+      //最终渲染的节点信息
+      elementUI: 'span',
+    },
+    style: {},
+    events: []
   }
-}
+};

@@ -18,18 +18,20 @@
 </template>
 
 <script setup lang="ts" name="export-code">
-import { computed, ref } from "vue";
+import { computed, ref, toRaw } from "vue";
 import Design from "../../../utils/analyze";
 import CodeEditor from "../../../components/codeEditor/index.vue"
+import { useStore } from "vuex";
 
 const props = defineProps({
   visible: Boolean,
 });
 let editor: any = undefined
+const $store = useStore()
+const $schemaStore = $store.state.schemaStore
 const schema = computed(() => {
-  const res: string = window.localStorage.getItem("schema") || ''
-  const config = JSON.parse(res);
-  return config || {}
+  const res: string = toRaw($schemaStore.schema)
+  return res || {}
 });
 const design = new Design(schema.value);
 const exportType = ref("html");

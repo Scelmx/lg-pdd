@@ -13,6 +13,7 @@ export default {
       text: '二级',
       to: '',
       replace: ''
-    }]
+    }],
+    events: []
   }
 }

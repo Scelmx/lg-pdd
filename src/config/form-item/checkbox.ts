@@ -27,8 +27,9 @@ export default {
     required: false,
     validations: '',
     checkedInfo: '请选择复选框',
-    bindAction: []
-  },
-  // schema属性对应可编辑状态 决定是 input 、 select等等交互
-  attrs: {}
+    renderTag: {  //最终渲染的节点信息
+      elementUI: 'el-checkboxes'
+    },
+    events: []
+  }
 }

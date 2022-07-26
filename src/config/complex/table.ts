@@ -10,6 +10,9 @@ export default {
     showHeader: '',
     highlightCurrentRow: '',
     emptyText: '',
+    renderTag: {  //最终渲染的节点信息
+      elementUI: 'el-nav'
+    },
     columns: [{
       value: 'id',
       label: 'id',
@@ -18,6 +21,7 @@ export default {
       value: 'name',
       label: '名称',
       width: ''
-    }]
+    }],
+    events: []
   }
 }

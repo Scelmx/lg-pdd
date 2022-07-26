@@ -22,7 +22,9 @@ export default {
     disabled: false,
     checkedInfo: '请选择日期',
     isFormat: false,
-    bindAction: []
-  },
-  attrs: {}
+    renderTag: {  //最终渲染的节点信息
+      elementUI: 'el-checkboxes'
+    },
+    events: []
+  }
 }

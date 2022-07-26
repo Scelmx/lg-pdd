@@ -22,7 +22,9 @@ export default {
     disabled: false,
     checkedInfo: '请选择时间',
     isFormat: false,
-    bindAction: []
-  },
-  attrs: {}
+    renderTag: {  //最终渲染的节点信息
+      elementUI: 'el-timepicker'
+    },
+    events: []
+  }
 }

@@ -29,8 +29,7 @@ export default {
     validations: '',
     checkedInfo: '请选择日期时间',
     isFormat: false,
-    bindAction: [],
+    events: [],
     style: {}
-  },
-  attrs: {}
+  }
 }

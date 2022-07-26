@@ -3,6 +3,9 @@ export default {
   config: {
     type: 'nav',
     name: 'nav',
-    bindAction: []
+    renderTag: {  //最终渲染的节点信息
+      elementUI: 'el-nav'
+    },
+    events: []
   }
 }

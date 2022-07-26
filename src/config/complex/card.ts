@@ -5,6 +5,7 @@ export default {
     title: '标题',
     bodyStyle: {},
     shadow: '',
-    chirdren: []
+    chirdren: [],
+    enents: []
   }
 }

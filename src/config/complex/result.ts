@@ -6,6 +6,9 @@ export default {
     icon: '',
     title: '返回结果',
     subTitle: '子标题',
-    bindAction: []
+    renderTag: {  //最终渲染的节点信息
+      elementUI: 'el-result'
+    },
+    events: []
   }
 }

@@ -6,6 +6,9 @@ export default {
     description: '空空如也',
     image: '',
     imageSize: '',
-    children: []
+    renderTag: {  //最终渲染的节点信息
+      elementUI: 'el-empty'
+    },
+    events: []
   }
 }

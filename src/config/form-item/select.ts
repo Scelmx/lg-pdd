@@ -49,7 +49,10 @@ export default {
     valueKey: 'value',
     labelKey: 'label',
     valueType: 'string',
-    bindAction: [],
+    events: [],
+    renderTag: {  //最终渲染的节点信息
+      elementUI: 'el-select'
+    },
     style: {
       width: ''
     }

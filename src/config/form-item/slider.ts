@@ -13,6 +13,9 @@ export default {
       width: '50px',
       height: '50px'
     },
-    bindAction: []
+    renderTag: {  //最终渲染的节点信息
+      elementUI: 'el-slider'
+    },
+    events: []
   }
 }

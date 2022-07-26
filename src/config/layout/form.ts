@@ -4,6 +4,6 @@ export default {
     type: 'form',
     name: 'form',
     children: [],
-    bindAction: []
+    events: []
   }
 }

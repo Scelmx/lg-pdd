@@ -26,7 +26,10 @@ export default {
     drag: false,
     multiple: false,
     showFileList: true,
-    bindAction: [],
+    events: [],
+    renderTag: {  //最终渲染的节点信息
+      elementUI: 'el-upload'
+    },
     style: {}
   }
 }

@@ -39,16 +39,14 @@ export default {
       expandTrigger: 'click',
       multiple: false,
       checkStrictly: false,
-      // emitPath: true,
-      // valueName: '',
-      // labelName: '',
-      // disabledName: '',
-      // leaf: ''
     },
     checkedInfo: '请选择级联选择',
-    bindAction: [],
+    events: [],
     style: {
       width: ''
-    }
+    },
+    renderTag: {  //最终渲染的节点信息
+      elementUI: 'el-cascader'
+    },
   }
 }

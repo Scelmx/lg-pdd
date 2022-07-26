@@ -9,6 +9,9 @@ export default {
     finishStatus: '',
     alignCenter: false,
     simple: false,
+    renderTag: {  //最终渲染的节点信息
+      elementUI: 'el-steps'
+    },
     controls: [{
       title: '第一步',
       icon: '',
@@ -17,6 +20,7 @@ export default {
       title: '第二步',
       icon: '',
       description: '第二步描述'
-    }]
+    }],
+    events: []
   }
 }

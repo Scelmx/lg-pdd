@@ -5,6 +5,6 @@ export default {
     name: 'page',
     title: '标题',
     children: [],
-    bindAction: []
+    events: []
   }
 }
