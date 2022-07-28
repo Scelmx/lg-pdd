@@ -19,7 +19,7 @@ export default {
       }
     ],
     // source: '',
-    defaultValue: '',
+    value: '',
     hiddenOn: '',
     labelTips: '',
     disabled: false,

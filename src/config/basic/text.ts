@@ -3,7 +3,7 @@ export default {
   config: {
     name: 'text',
     type: 'text',
-    text: '文本',
+    value: '文本',
     renderTag: {
       //最终渲染的节点信息
       elementUI: 'span',

@@ -8,6 +8,7 @@ export default {
       //最终渲染的节点信息
       elementUI: 'el-input',
     },
+    value: "{{test}}",
     style: {},
     events: []
   }

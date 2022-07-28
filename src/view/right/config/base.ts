@@ -16,6 +16,10 @@ const attrBase = {
   text: {
     label: '文本',
     type: 'input'
+  },
+  value: {
+    label: "字段值",
+    type: "input"
   }
 }
 

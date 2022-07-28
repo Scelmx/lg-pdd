@@ -1,26 +1,29 @@
 <template>
-    <div class="lg-item lg-input">
-        <label v-if="!schema.formItem" :for="schema.name">{{schema.label}}</label>
-        <el-input :name="schema.name">{{schema.text}}</el-input>
-    </div>
+  <div class="lg-item lg-input">
+    <label v-if="!schema.formItem" :for="schema.name">{{schema.label}}</label>
+    <el-input :name="schema.name" v-model="value" :style="style" @input="handleChange" ></el-input>
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { computed, defineProps } from "vue";
+import { useData } from "../data";
 
-export default defineComponent({
-    setup() {
-        
-    },
-    props: {
-        schema: {
-            type: Object,
-            default: {}
-        }
-    }
-})
+const props = defineProps({
+  schema: {
+    type: Object,
+    default: {},
+  },
+});
+
+const schema = computed(() => {
+  return props.schema;
+});
+const { style, ...attrs } = schema.value;
+const $data = useData(attrs);
+const { value, initData, handleChange } = $data;
+initData();
 </script>
 
 <style scoped>
-
 </style>

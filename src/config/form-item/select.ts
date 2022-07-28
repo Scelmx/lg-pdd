@@ -5,7 +5,7 @@ export default {
     name: 'select1',
     labelWidth: '',
     type: 'select',
-    defaultValue: '',
+    value: '',
     placeholder: '请选择',
     options: [
       {
