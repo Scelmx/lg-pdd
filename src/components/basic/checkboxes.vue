@@ -1,17 +1,17 @@
 <template>
-  <div class="lg-item lg-select">
-    <el-select v-model="value">
-      <el-option
+  <div class="lg-item lg-checkboxes">
+    <el-checkbox-group v-model="value" @change="handleChange">
+      <el-checkbox
         v-for="(option, index) of getOptions"
         :key="index"
         :label="option.label"
         :value="option.value"
-      ></el-option>
-    </el-select>
+      ></el-checkbox>
+    </el-checkbox-group>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="checkboxes">
 import { defineProps } from "vue";
 import { useData } from "../data";
 

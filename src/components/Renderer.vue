@@ -25,9 +25,7 @@ export default defineComponent({
   },
   computed: {
     className() {
-      return `${this.attrs.className || ""} ${
-        this.schema.className || ""
-      } ${['page', 'form'].includes(this.schema.type) ? '' : 'lg-item'}`;
+      return `${this.attrs.className || ""} ${this.schema.className || ""}`;
     },
   },
   methods: {},

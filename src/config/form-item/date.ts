@@ -1,8 +1,8 @@
 export default {
   name: '日期选择器',
   config: {
-    type: 'datetime',
-    conponentType: 'date',
+    type: 'date',
+    dateType: 'dateTime',
     label: '日期',
     labelWidth: '',
     defaultValue: '',

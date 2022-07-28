@@ -1,10 +1,10 @@
 export default {
   name: '单选框',
   config: {
-    type: 'radios',
+    type: 'radio',
     label: '单选框',
     labelWidth: '',
-    options: [
+    staticOptions: [
       {
         label: '单选一',
         value: '0',

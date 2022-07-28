@@ -1,8 +1,8 @@
 export default {
   name: '下拉框',
   config: {
-    label: '下拉选择',
     name: 'select1',
+    label: '下拉选择',
     labelWidth: '',
     type: 'select',
     value: '',

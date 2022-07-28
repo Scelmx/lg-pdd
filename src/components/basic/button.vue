@@ -1,25 +1,22 @@
 <template>
-    <div class="lg-item lg-button">
-        <el-button>{{schema.text}}</el-button>
-    </div>
+  <div class="lg-item lg-button">
+    <el-button>{{schema.text}}</el-button>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-    setup() {
-        
+  setup() {},
+  props: {
+    schema: {
+      type: Object,
+      default: {},
     },
-    props: {
-        schema: {
-            type: Object,
-            default: {}
-        }
-    }
-})
+  },
+});
 </script>
 
 <style scoped>
-
 </style>

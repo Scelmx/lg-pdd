@@ -1,4 +1,4 @@
-let  basic:any = {}
+let basic:any = {}
 const modules: any = import.meta.globEager('./*.vue')
 
 for (const path of Object.keys(modules)) {

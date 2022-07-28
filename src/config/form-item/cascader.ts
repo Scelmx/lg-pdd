@@ -4,7 +4,7 @@ export default {
     type: 'cascader',
     label: '级联选择器',
     labelWidth: '',
-    defaultValue: '',
+    value: '',
     placeholder: '请选择',
     separator: '/',
     // popperClass: '',
@@ -18,7 +18,7 @@ export default {
     clearable: false,
     disabled: false,
     margin: '',
-    options: [
+    staticOptions: [
       {
         label: '选项1',
         value: 'item1',

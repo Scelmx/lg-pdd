@@ -1,5 +1,7 @@
 <template>
-  <el-result :icon="schema.icon" :title="schema.title" :sub-title="schema.subTitle"></el-result>
+  <class class="lg-item lg-result">
+    <el-result :icon="schema.icon" :title="schema.title" :sub-title="schema.subTitle"></el-result>
+  </class>
 </template>
 
 <script lang="ts">

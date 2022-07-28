@@ -2,9 +2,10 @@ export default {
   name: '复选框组件',
   config: {
     type: 'checkboxes',
+    name: 'checkboxes',
     label: '复选框',
     labelWidth: '',
-    options: [
+    staticOptions: [
       {
         label: '选项1',
         value: '1',
@@ -18,10 +19,8 @@ export default {
         size: ''
       }
     ],
-    // min: '',
     max: '',
-    defaultValue: '',
-    // size: '',
+    value: '',
     hiddenOn: '',
     disabled: false,
     required: false,

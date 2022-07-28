@@ -1,5 +1,7 @@
 <template>
-  <el-empty :image="schema.image" :image-size="schema.imageSize" :description="schema.description"></el-empty>
+  <div class="lg-item lg-empty">
+    <el-empty :image="schema.image" :image-size="schema.imageSize" :description="schema.description"></el-empty>
+  </div>
 </template>
 
 <script lang="ts">

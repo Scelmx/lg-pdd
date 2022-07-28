@@ -94,7 +94,7 @@ const dragOptions = computed(() => {
 /* .lg-page .lg-item */
 .lg-canvas .lg-item  {
   cursor: pointer;
-  display: inline-block;
+  /* display: inline-block; */
 }
 /* .lg-page .lg-item > * */
 .lg-canvas .lg-item > * {

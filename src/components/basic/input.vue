@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from "vue";
+import { defineProps } from "vue";
 import { useData } from "../data";
 
 const props = defineProps({
@@ -16,14 +16,8 @@ const props = defineProps({
   },
 });
 
-const schema = computed(() => {
-  return props.schema;
-});
-const { style, ...attrs } = schema.value;
+const { style, ...attrs } = props.schema;
 const $data = useData(attrs);
 const { value, initData, handleChange } = $data;
 initData();
 </script>
-
-<style scoped>
-</style>

@@ -1,5 +1,7 @@
 <template>
-  <el-card :body-style="schema.bodyStyle" :shadow="schema.shadow"></el-card>
+  <div class="lg-item lg-card">
+    <el-card :body-style="schema.bodyStyle" :shadow="schema.shadow"></el-card>
+  </div>
 </template>
 
 <script lang="ts">
