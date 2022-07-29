@@ -18,18 +18,20 @@
 </template>
 
 <script setup lang="ts">
-import { computed, toRaw } from "vue";
+import { computed, ref, toRaw, watch } from "vue";
 import Attr from "./components/attr.vue";
 import Style from "./components/style.vue";
 import Events from "./components/event.vue";
 import { useStore } from "vuex";
 
-const $store = useStore()
-const $schemaStore = $store.state.schemaStore
-const activeSchema = computed(() => {
-  return toRaw($schemaStore.activeSchema) || {}
-})
+const $store = useStore();
+const $schemaStore = $store.state.schemaStore;
+const activeId = computed(() => $schemaStore.activeId)
+const activeSchema: any = ref($schemaStore.activeSchema || {});
 
+watch(activeId, (oldVal, newVal) => {
+  activeSchema.value = $schemaStore.activeSchema;
+});
 </script>
 
 <style scoped>
@@ -37,8 +39,8 @@ const activeSchema = computed(() => {
   flex: 0.2;
 }
 .lg-tabs .el-tabs__nav-scroll {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 </style>

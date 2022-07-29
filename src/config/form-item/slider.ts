@@ -1,5 +1,5 @@
 export default {
-  name: '进度条',
+  name: '滑块',
   config: {
     type: 'slider',
     name: 'slider',

@@ -1,10 +1,10 @@
 <template>
   <div class="lg-item lg-pagination">
     <el-pagination
-      :current-page="attrs.currentPage"
-      :page-size="attrs.pageSize"
+      v-model:current-page="currentPage"
+      v-model:page-size="pageSize"
       :default-page-size="attrs.defaultPageSize"
-      :total="attrs.total"
+      :total="total"
       :page-sizes="attrs.pageSizes"
       :layout="attrs.layout"
       @size-change="sizeChange"
@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { defineProps } from "vue";
 import { useData } from "../data";
 
@@ -28,9 +28,9 @@ const props = defineProps({
 
 const { style, ...attrs } = props.schema;
 const $data = useData(attrs);
-const { value, initData, handleChange } = $data;
+const { value, toTargetType, initData, handleChange } = $data;
 initData();
+const currentPage = toTargetType(attrs.currentPage, Number);
+const pageSize = toTargetType(attrs.pageSize, Number);
+const total = toTargetType(attrs.total, Number);
 </script>
-
-<style scoped>
-</style>

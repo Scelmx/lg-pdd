@@ -1,29 +1,30 @@
 <template>
+  <section>
     <Renderer :attrs="attrs" :schema="schema"></Renderer>
+  </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import Renderer from '../Renderer.vue'
+import { defineComponent } from "vue";
+import Renderer from "../Renderer.vue";
 
 export default defineComponent({
-    components: {
-        Renderer
+  components: {
+    Renderer,
+  },
+  props: {
+    schema: {
+      type: Object,
+      default: {},
     },
-    props: {
-        schema: {
-            type: Object,
-            default: {}
-        }
+  },
+  created() {},
+  computed: {
+    attrs() {
+      return { tag: "div", className: "lg-page lg-container" };
     },
-    created() {
-    },
-    computed: {
-        attrs() {
-            return { tag: 'div', className: 'lg-page lg-container' }
-        }
-    }
-})
+  },
+});
 </script>
 
 <style scoped>

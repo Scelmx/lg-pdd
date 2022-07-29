@@ -1,10 +1,11 @@
 <template>
   <draggable :tag="attrs.tag" :list="schema.children" group="lgDraggable" :class="className">
+    {{schema}}
     <component
       v-for="(item, index) of schema.children"
       :key="index"
       :is="item.type"
-      :schema="item"
+      :schema="JSON.parse(JSON.stringify(item))"
       :class="['page', 'form'].includes(this.schema.type) ? '' : 'lg-item'"
       :data-id="item.id"
     />

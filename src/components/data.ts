@@ -5,7 +5,6 @@ export function useData(schema: any) {
   const $store: any = useStore();
   const $dataStore = $store?.state.dataStore || {};
   const { name, value } = schema;
-
   /**
    * @desc 获取options
    */
@@ -35,6 +34,7 @@ export function useData(schema: any) {
    * @desc 优先使用远程数据
    */
   const data = computed(() => {
+    console.log($dataStore[name], dynamicData.value, '---==');
     return $dataStore[name] || dynamicData.value;
   });
 
@@ -42,6 +42,14 @@ export function useData(schema: any) {
     $store.dispatch('destoryStore', oldVal);
     $store.dispatch('setStore', name, newVal);
   });
+
+  const toTargetType = (val: string, func: Function) => {
+    try {
+      return func(val)
+    } catch(e) {
+      console.log("转换失败，请检查字符串是否正确")
+    }
+  }
 
   /**
    * @desc 初始化store数据
@@ -60,6 +68,7 @@ export function useData(schema: any) {
   return {
     value: data.value,
     getOptions: getOptions.value,
+    toTargetType,
     initData,
     handleChange,
   };
