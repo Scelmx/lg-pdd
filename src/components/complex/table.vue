@@ -1,23 +1,26 @@
 <template>
-  <el-table
-    :stripe="schema.stripe"
-    :border="schema.border"
-    :size="schema.size"
-    :fit="schema.fit"
-    :show-header="schema.showHeader"
-    :highlight-current-row="schema.highlightCurrentRow"
-    :empty-text="schema.emptyText"
-  >
-    <template v-if="schema.columns && schema.columns.length > 0">
-      <el-table-column
-        v-for="(column, index) of schema.columns"
-        :key="index"
-        :prop="column.value"
-        :label="column.label"
-        :width="column.width"
-      ></el-table-column>
-    </template>
-  </el-table>
+  <div class="lg-item lg-table">
+    <el-table
+      :stripe="schema.stripe"
+      :border="schema.border"
+      :size="schema.size"
+      :fit="schema.fit"
+      :show-header="schema.showHeader"
+      :highlight-current-row="schema.highlightCurrentRow"
+      :empty-text="schema.emptyText"
+      :style="schema.style"
+    >
+      <template v-if="schema.columns && schema.columns.length > 0">
+        <el-table-column
+          v-for="(column, index) of schema.columns"
+          :key="index"
+          :prop="column.value"
+          :label="column.label"
+          :width="column.width"
+        ></el-table-column>
+      </template>
+    </el-table>
+  </div>
 </template>
 
 <script lang="ts">

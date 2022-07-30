@@ -4,7 +4,7 @@
     <section class="lg-center__container">
       <LeftPanel />
       <CenterPanel :schema="schema" @active-change="activeTargetChange" />
-      <RightPanel :active-schema="{ name: 'zyx' }" />
+      <RightPanel />
     </section>
   </section>
 </template>

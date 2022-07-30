@@ -81,7 +81,7 @@ const dragOptions = computed(() => {
 });
 </script>
 
-<style>
+<style lang="scss">
 .lg-design__center {
   border: 1px solid #000;
   flex: 1;

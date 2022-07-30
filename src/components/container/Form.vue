@@ -2,7 +2,7 @@
   <Renderer :attrs="attrs" :schema="schema"></Renderer>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { computed, defineProps } from "vue";
 import Renderer from "../Renderer.vue";
 

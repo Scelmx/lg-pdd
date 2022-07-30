@@ -20,6 +20,8 @@
             ></el-option>
           </el-select>
 
+          <el-color-picker v-if="details[attr] === 'color'" v-model="props.schema[attr]"></el-color-picker>
+
           <Rect v-if="details[attr].type==='rect'" @set-distans="setDistans"></Rect>
         </el-form-item>
       </template>
