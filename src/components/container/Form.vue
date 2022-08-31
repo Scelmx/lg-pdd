@@ -3,19 +3,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from "vue";
+import { computed, defineProps, reactive, toRefs } from "vue";
 import Renderer from "../Renderer.vue";
 
-const props = defineProps({
-  schema: {
-    type: Object,
-    default: {},
-  },
-});
+interface Component {
+  schema: any
+}
 
-const attrs = computed(() => {
-  return { tag: "el-form", className: "lg-form lg-container" };
-});
+const props = defineProps<Component>();
+
+const { schema } = toRefs(props)
+
+const attrs = reactive({ tag: "el-form", className: "lg-form lg-container" });
 </script>
 
 <style scoped>

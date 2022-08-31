@@ -4,23 +4,16 @@
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import page from "./container/page.vue";
+<script setup lang="ts">
+import { defineComponent, toRefs, watch } from "vue";
 
-export default defineComponent({
-  components: {
-    page,
-  },
-  props: {
-    schema: {
-      type: Object,
-      default: {},
-    },
-  },
-  setup(props: any) {},
-  computed: {},
-});
+interface LgComponent {
+    schema: any
+}
+
+const props = defineProps<LgComponent>()
+const { schema } = toRefs(props)
+
 </script>
 
 <style scoped lang="scss">

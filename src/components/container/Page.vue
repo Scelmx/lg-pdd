@@ -4,27 +4,21 @@
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { defineComponent, reactive, toRefs, watch } from "vue";
 import Renderer from "../Renderer.vue";
+// import { LgComponent } from "../../interface/index"
 
-export default defineComponent({
-  components: {
-    Renderer,
-  },
-  props: {
-    schema: {
-      type: Object,
-      default: {},
-    },
-  },
-  created() {},
-  computed: {
-    attrs() {
-      return { tag: "div", className: "lg-page lg-container" };
-    },
-  },
-});
+interface LgComponent {
+    schema: any
+}
+
+const props = defineProps<LgComponent>();
+const { schema } = toRefs(props)
+const attrs = reactive({
+  tag: "div",
+  className: "lg-page lg-container"
+})
 </script>
 
 <style scoped>

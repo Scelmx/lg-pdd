@@ -1,36 +1,27 @@
 <template>
   <draggable :tag="attrs.tag" :list="schema.children" group="lgDraggable" :class="className">
-    {{schema}}
     <component
       v-for="(item, index) of schema.children"
       :key="index"
       :is="item.type"
-      :schema="JSON.parse(JSON.stringify(item))"
+      :schema="item.children ? [item] : item"
       :class="['page', 'form'].includes(this.schema.type) ? '' : 'lg-item'"
       :data-id="item.id"
     />
   </draggable>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import { VueDraggableNext } from "vue-draggable-next";
+<script setup lang="ts">
+import { defineComponent, ref, toRef, toRefs, watch } from "vue";
+import { VueDraggableNext as draggable } from "vue-draggable-next";
 
-export default defineComponent({
-  components: {
-    draggable: VueDraggableNext,
-  },
-  props: {
-    attrs: { type: Object, default: () => {} },
-    schema: { type: Object, default: () => {} },
-  },
-  computed: {
-    className() {
-      return `${this.attrs.className || ""} ${this.schema.className || ""}`;
-    },
-  },
-  methods: {},
-});
+interface Component {
+  schema: any,
+  attrs: any
+}
+const props = defineProps<Component>()
+const { attrs, schema } = toRefs(props);
+const className = ref(`${attrs.value.className || ""} ${schema.value.className || ""}`)
 </script>
 
 <style scoped>

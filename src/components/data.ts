@@ -1,47 +1,56 @@
-import { computed, watch } from 'vue';
+import { computed, reactive, ref, toRefs, watch } from 'vue';
 import { useStore } from 'vuex';
 
+interface Schema {
+  value: any,
+  instance: any,
+  $store: any
+}
+
 export function useData(schema: any) {
-  const $store: any = useStore();
-  const $dataStore = $store?.state.dataStore || {};
-  const { name, value } = schema;
+  const state = reactive<Schema>({
+    value: "",
+    instance: "",
+    $store: useStore()
+  })
+  const $dataStore = state.$store?.state.dataStore || {};
+  const isUpdateStore = ref(true);
+ 
   /**
-   * @desc 获取options
+   * @description 获取options
    */
   const getOptions = computed(() => {
-    if (schema.dynamicOptions && schema.dynamicOptions.length) {
-      return $dataStore[schema.dynamicOptions]
+    if (schema.value.dynamicOptions && schema.value.dynamicOptions.length) {
+      return $dataStore[schema.value.dynamicOptions]
     }
-    return schema.staticOptions
+    return schema.value.staticOptions
   })
 
   /**
-   * @desc 从store中获取数据源, 存在则使用store数据，反之使用属性默认值
+   * @description 从store中获取数据源, 存在则使用store数据，反之使用属性默认值
    */
-  const dynamicData = computed(() => {
+  const dynamicData = () => {
     // 匹配双括号
+    const { value } = schema.value
     const val = value || ''
     const tagReg: RegExp = /(?<={{).*(?=}})/g;
     const targetName = val.match(tagReg);
-    if (targetName) {
-      const getData = new Function('data', `return data.${targetName[0]};`);
-      return getData($dataStore) || val;
+    try {
+      if (targetName) {
+        isUpdateStore.value = false
+        const getData = new Function('data', `return data.${targetName[0]};`);
+        return getData($dataStore) || val;
+      }
+    } catch (err) {
+      console.warn(err, "输入动态值时异常")
     }
     return val;
-  });
+  };
 
-  /**
-   * @desc 优先使用远程数据
-   */
-  const data = computed(() => {
-    console.log($dataStore[name], dynamicData.value, '---==');
-    return $dataStore[name] || dynamicData.value;
-  });
-
-  watch(name, (oldVal, newVal) => {
-    $store.dispatch('destoryStore', oldVal);
-    $store.dispatch('setStore', name, newVal);
-  });
+  watch(schema, (newSchema, oldSchema) => {
+    distoryStore(oldSchema);
+    initData();
+  }, { deep: true })
 
   const toTargetType = (val: string, func: Function) => {
     try {
@@ -52,22 +61,34 @@ export function useData(schema: any) {
   }
 
   /**
-   * @desc 初始化store数据
+   * @description 初始化store数据
    */
   const initData = () => {
-    $store.dispatch('setStore', { key: name, value: data.value });
+    const { name }= schema.value;
+    state.value = $dataStore[name] || dynamicData()
+    handleChange()
   };
 
   /**
-   * @desc 触发事件导致数据改变时改变store数据
+   * @description 销毁store
+   */
+  const distoryStore = (config: any = schema.value) => {
+    const { name }= config;
+    state.$store.dispatch('setStore', { key: name, value: undefined });
+  }
+
+  /**
+   * @description 触发事件导致数据改变时改变store数据
    */
   const handleChange = () => {
-    $store.dispatch('setStore', { key: name, value: data.value });
+    const { name }= schema.value;
+    state.$store.dispatch('setStore', { key: name, value: state.value });
+    console.log($dataStore);
   };
 
   return {
-    value: data.value,
-    getOptions: getOptions.value,
+    ...toRefs(state),
+    getOptions,
     toTargetType,
     initData,
     handleChange,

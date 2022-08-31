@@ -1,19 +1,19 @@
 <template>
   <el-container class="lg-attrs">
-    <el-form>
-      <template v-for="(attr, index) of Object.keys(details)">
+    <el-form label-width="80px">
+      <template v-for="(key, index) of Object.keys(details)">
         <el-form-item
-          v-if="details[attr]"
+          v-if="details[key]"
           :key="index"
-          :label="details[attr].label"
+          :label="details[key].label"
         >
-          <el-input v-if="['input', 'textarea'].includes(details[attr].type)" v-model="props.schema[attr]"></el-input>
+          <el-input v-if="['input', 'textarea'].includes(details[key].type)" v-model="schema[key]"></el-input>
 
-          <el-input-number v-if="details[attr].type === 'number'" v-model="props.schema[attr]" @change="handleChange" />
+          <el-input-number v-if="details[key].type === 'number'" v-model="schema[key]" @change="handleChange" />
 
-          <el-select v-if="details[attr].type === 'select'" v-model="props.schema[attr]">
+          <el-select v-if="details[key].type === 'select'" v-model="schema[key]">
             <el-option
-              v-for="(opt, optIndex) of details[attr].options"
+              v-for="(opt, optIndex) of details[key].options"
               :key="optIndex"
               :label="opt.label"
               :value="opt.value"
@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, defineProps, toRefs } from "vue";
 import { getAttr } from "../mixins/viewIterator"
 
 const props = defineProps({
@@ -35,13 +35,19 @@ const props = defineProps({
     require: true,
   },
 });
+
+const { schema } = toRefs(props)
 const details: any = computed(() => {
-  return getAttr(props.schema)
+  console.log(details, "123");
+  return getAttr(schema.value)
 });
 </script>
 
 <style scoped>
 .lg-attrs {
-  height: 100px;
+  height: 100%;
+}
+.el-form-item__label {
+  font-size: 12px;
 }
 </style>

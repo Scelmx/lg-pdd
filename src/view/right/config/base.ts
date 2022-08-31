@@ -20,6 +20,14 @@ const attrBase = {
   value: {
     label: "字段值",
     type: "input"
+  },
+  options: {
+    label: "选项",
+    type: "select",
+    options: [{
+      label: "123",
+      value: "321"
+    }]
   }
 }
 
