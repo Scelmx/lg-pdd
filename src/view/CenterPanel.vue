@@ -1,6 +1,6 @@
 <template>
   <div class="lg-design__center" @click="setActive">
-    <LgRender :schema="schema" :actions="[]"/>
+    <LgRender :schema="schema" :actions="[]" />
   </div>
 </template>
 
@@ -49,50 +49,48 @@ export default defineComponent({
   },
   computed: {
     getSchema() {
-      return this.schema || {}
-    }
+      return this.schema || {};
+    },
   },
   methods: {
     componentNode() {
-      const renderNode = this.$el.querySelector('.lg-design__center .lg-canvas')
+      const renderNode = this.$el.querySelector(
+        ".lg-design__center .lg-canvas"
+      );
       if (renderNode) {
-        return renderNode.querySelectorAll('.lg-item') || []
+        return renderNode.querySelectorAll(".lg-item") || [];
       }
-      return []
+      return [];
     },
     setActive(e: any) {
-      const activeClass = "lg-item--active"
-      const node: any = e.target
-      this.clearActive(activeClass)
-      node.classList.add(activeClass)
-      const active = node.getAttribute('data-id')
-      this.$emit("activeChange", active)
+      const activeClass = "lg-item--active";
+      const node: any = e.target;
+      this.clearActive(activeClass);
+      node.classList.add(activeClass);
+      const active = node.getAttribute("data-id");
+      this.$emit("activeChange", active);
     },
     clearActive(className: string) {
-      const nodeList = this.componentNode()
+      const nodeList = this.componentNode();
       for (let node of nodeList) {
-        node.classList.remove(className)
+        node.classList.remove(className);
       }
-    }
-  }
+    },
+  },
 });
 const dragOptions = computed(() => {
   return { group: { name: "lg-draggable" } };
 });
 </script>
 
-<style lang="scss">
+<style>
 .lg-design__center {
-  border: 1px solid #000;
   flex: 1;
   height: 100%;
   background: #ccc;
 }
-.lg-canvas {
-  height: 100%;
-}
 /* .lg-page .lg-item */
-.lg-canvas .lg-item  {
+.lg-canvas .lg-item {
   cursor: pointer;
   /* display: inline-block; */
 }

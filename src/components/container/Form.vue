@@ -1,10 +1,10 @@
 <template>
-  <Renderer :attrs="attrs" :schema="schema"></Renderer>
+  <DragRenderer :attrs="attrs" :schema="schema"></DragRenderer>
 </template>
 
 <script setup lang="ts">
 import { computed, defineProps, reactive, toRefs } from "vue";
-import Renderer from "../Renderer.vue";
+import DragRenderer from "../dragRenderer.vue";
 
 interface Component {
   schema: any
@@ -13,6 +13,10 @@ interface Component {
 const props = defineProps<Component>();
 
 const { schema } = toRefs(props)
+
+schema.value.children.map((child: any) => {
+  child.isFormItem = true
+})
 
 const attrs = reactive({ tag: "el-form", className: "lg-form lg-container" });
 </script>

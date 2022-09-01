@@ -44,6 +44,7 @@ body,
   width: 100%;
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
 .lg-design {
   height: 100%;
@@ -57,5 +58,8 @@ body,
 }
 ul > li {
   list-style: none;
+}
+.el-aside::-webkit-scrollbar {
+  display: none;
 }
 </style>

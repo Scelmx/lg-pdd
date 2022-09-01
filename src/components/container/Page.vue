@@ -1,12 +1,10 @@
 <template>
-  <section>
-    <Renderer :attrs="attrs" :schema="schema"></Renderer>
-  </section>
+  <DragRenderer :attrs="attrs" :schema="schema"></DragRenderer>
 </template>
 
 <script setup lang="ts">
 import { defineComponent, reactive, toRefs, watch } from "vue";
-import Renderer from "../Renderer.vue";
+import DragRenderer from "../dragRenderer.vue";
 // import { LgComponent } from "../../interface/index"
 
 interface LgComponent {

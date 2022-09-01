@@ -18,8 +18,12 @@ const { schema } = toRefs(props)
 
 <style scoped lang="scss">
 .lg-canvas {
-  min-height: 300px;
+  display: block;
+  height: calc(100% - 60px);
+  padding: 8px;
+  overflow: hidden;
   .lg-container {
+    display: block;
     width: 100%;
     &:empty {
       min-height: 50px;
@@ -28,6 +32,9 @@ const { schema } = toRefs(props)
   .lg-item {
     display: inline-block;
     width: 274px;
+  }
+  .lg-page {
+    min-height: 100% !important;
   }
 }
 </style>
