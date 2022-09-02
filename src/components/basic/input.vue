@@ -1,7 +1,38 @@
 <template>
   <div class="lg-item lg-input">
-    <label v-if="!schema.formItem" :for="schema.name">{{schema.label}}</label>
-    <el-input :name="schema.name" v-model="value" :style="style" @input="handleChange"></el-input>
+    <el-input
+      v-if="schema.category !== 'number'"
+      v-model="value"
+      :name="schema.name"
+      :type="schema.category"
+      :style="style"
+      :maxlength="schema.maxlength"
+      :minlength="schema.minlength"
+      :placeholder="schema.placeholder"
+      :rows="schema.rows"
+      :size="schema.size"
+      :prefixIcon="schema.prefixIcon"
+      :suffixIcon="schema.suffixIcon"
+      :resize="schema.resize"
+      :clearable="schema.clearable"
+      :showWordLimit="schema.showWordLimit"
+      :validateEvent="schema.validateEvent"
+      @input="handleChange"></el-input>
+    <el-input-number
+      v-else
+      v-model="value"
+      :name="schema.name"
+      :style="style"
+      :placeholder="schema.placeholder"
+      :max="schema.max"
+      :min="schema.min"
+      :step="schema.step"
+      :precision="schema.precision"
+      :controls="schema.controls"
+      :size="schema.size"
+      @input="handleChange"
+    >
+    </el-input-number>
   </div>
 </template>
 

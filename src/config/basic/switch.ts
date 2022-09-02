@@ -4,6 +4,11 @@ export default {
     name: 'switch',
     type: 'switch',
     value: false,
+    disabledOn: "",
+    width: "",
+    size: "default",
+    loading: false,
+    validateEvent: false,
     renderTag: {
       //最终渲染的节点信息
       elementUI: 'el-input',

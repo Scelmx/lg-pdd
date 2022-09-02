@@ -1,6 +1,6 @@
 <template>
   <div class="lg-item lg-tag">
-    <el-tag></el-tag>  
+    <el-tag :type="schema.status">{{ schema.value }}</el-tag>  
   </div>  
 </template>
 

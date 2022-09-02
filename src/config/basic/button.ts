@@ -3,7 +3,17 @@ export default {
   config: {
     name: 'button',
     type: 'button',
-    text: '提交',
+    value: '提交',
+    hiddenOn: "",
+    disabledOn: "",
+    category: "",
+    size: "default",
+    plain: false,
+    round: false,
+    circle: false,
+    loading: false,
+    loadingIcon: "Loading",
+    icon: "",
     renderTag: {
       //最终渲染的节点信息
       elementUI: 'el-button',

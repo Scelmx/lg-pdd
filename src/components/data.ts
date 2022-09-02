@@ -83,7 +83,6 @@ export function useData(schema: any) {
   const handleChange = () => {
     const { name }= schema.value;
     state.$store.dispatch('setStore', { key: name, value: state.value });
-    console.log($dataStore);
   };
 
   return {

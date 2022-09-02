@@ -7,7 +7,7 @@
           :key="index"
           :label="details[key].label"
         >
-          <el-input v-if="['input', 'textarea'].includes(details[key].type)" v-model="schema[key]"></el-input>
+          <el-input v-if="['input', 'textarea'].includes(details[key].type)" :type="details[key].type" :rows="2" v-model="schema[key]" ></el-input>
 
           <el-input-number v-if="details[key].type === 'number'" v-model="schema[key]" @change="handleChange" />
 
@@ -19,6 +19,8 @@
               :value="opt.value"
             ></el-option>
           </el-select>
+          
+          <el-switch v-if="details[key].type === 'switch'" v-model="schema[key]"></el-switch>
         </el-form-item>
       </template>
     </el-form>

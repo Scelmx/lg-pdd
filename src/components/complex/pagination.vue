@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps, toRefs } from "vue";
 import { useData } from "../data";
 
 const props = defineProps({
@@ -25,9 +25,10 @@ const props = defineProps({
     default: {},
   },
 });
+const { schema } = toRefs(props)
+const { style, ...attrs } = schema.value;
 
-const { style, ...attrs } = props.schema;
-const $data = useData(attrs);
+const $data = useData(schema);
 const { value, toTargetType, initData, handleChange } = $data;
 initData();
 const currentPage = toTargetType(attrs.currentPage, Number);

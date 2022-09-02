@@ -17,9 +17,29 @@ const attrBase = {
     label: '文本',
     type: 'input'
   },
+  maxlength: {
+    label: '最大长度',
+    type: 'input'
+  },
+  minlength: {
+    label: '最小长度',
+    type: 'input'
+  },
   value: {
     label: "字段值",
-    type: "input"
+    type: "textarea"
+  },
+  hiddenOn: {
+    label: "条件隐藏",
+    type: "textarea"
+  },
+  disabledOn: {
+    label: "条件禁用",
+    type: "textarea"
+  },
+  readonlyOn: {
+    label: "条件只读",
+    type: "textarea"
   },
   options: {
     label: "选项",
@@ -28,6 +48,71 @@ const attrBase = {
       label: "123",
       value: "321"
     }]
+  },
+  category: {
+    label: "状态",
+    type: "select",
+    options: [{
+      label: "成功",
+      value: "success"
+    },
+    {
+      label: "主要",
+      value: "primary"
+    },
+    {
+      label: "警告",
+      value: "warning"
+    }, {
+      label: "危险",
+      value: "danger"
+    },
+    {
+      label: "信息",
+      value: "info"
+    }, 
+    {
+      label: "文字",
+      value: ""
+    }]
+  },
+  size: {
+    label: "组件大小",
+    type: "select",
+    options: [{
+      label: "大",
+      value: "large"
+    }, {
+      label: "中",
+      value: "default"
+    }, {
+      label: "小",
+      value: "small"
+    }]
+  },
+  plain: {
+    label: "朴素化",
+    type: "switch"
+  },
+  round: {
+    label: "圆角化",
+    type: "switch"
+  },
+  circle: {
+    label: "圆形化",
+    type: "switch"
+  },
+  loading: {
+    label: "加载中",
+    type: "switch"
+  },
+  loadingIcon: {
+    label: "加载图标",
+    type: "IconSelect"
+  },
+  icon: {
+    label: "图标",
+    type: "IconSelect"
   }
 }
 

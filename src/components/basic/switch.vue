@@ -1,6 +1,5 @@
 <template>
   <div class="lg-item lg-switch">
-    <label v-if="!schema.formItem" :for="schema.name">{{schema.label}}</label>
     <el-switch :name="schema.name" v-model="val" :style="style" @input="handleChange" ></el-switch>
   </div>
 </template>

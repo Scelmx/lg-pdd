@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps, toRefs } from "vue";
 import { useData } from "../data";
 
 const props = defineProps({
@@ -22,8 +22,9 @@ const props = defineProps({
   },
 });
 
-const { style, ...attrs } = props.schema;
-const $data = useData(attrs);
+const { schema } = toRefs(props);
+const { style, ...attrs } = schema.value;
+const $data = useData(schema);
 const { value, getOptions, initData, handleChange } = $data;
 initData();
 </script>
