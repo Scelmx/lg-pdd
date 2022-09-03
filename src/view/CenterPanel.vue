@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from "vue";
-import LgRender from "../components/LgRender.vue";
+import LgRender from "../renderers/LgRender.vue";
 export default defineComponent({
   props: {
     schema: {

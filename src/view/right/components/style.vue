@@ -1,7 +1,7 @@
 <template>
   <el-container class="lg-style">
     <el-form>
-      <template v-for="(attr, index) of Object.keys(details)">
+      <!-- <template v-for="(attr, index) of Object.keys(details)">
         <el-form-item
           v-if="details[attr]"
           :key="index"
@@ -24,15 +24,17 @@
 
           <Rect v-if="details[attr].type==='rect'" @set-distans="setDistans"></Rect>
         </el-form-item>
-      </template>
+      </template> -->
+      
     </el-form>
+    <Codemirror style="height: 100vh; width: 100%; border: 1px solid #000" :value="JSON.stringify(schema.style)" type="add"></Codemirror>
   </el-container>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import schema from "../../../store/modules/schema";
+import { computed, toRefs } from "vue";
 import { getStyle } from "../mixins/viewIterator";
+import CodeEditor from "@/components/codeEditor.vue";
 import Rect from "./rect.vue"
 
 const props = defineProps({
@@ -41,9 +43,14 @@ const props = defineProps({
     require: true,
   },
 });
+
+const { schema } = toRefs(props);
+
 const details: any = computed(() => {
-  return getStyle(props.schema)
+  return getStyle(schema)
 });
+
+
 
 const setDistans = (key: string, value: string) => {
   

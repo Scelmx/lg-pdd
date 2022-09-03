@@ -25,6 +25,10 @@ const attrBase = {
     label: '最小长度',
     type: 'input'
   },
+  href: {
+    label: '地址',
+    type: 'input'
+  },
   value: {
     label: "字段值",
     type: "textarea"

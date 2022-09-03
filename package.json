@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "codemirror": "^6.0.1",
     "dart-sass": "^1.25.0",
     "dayjs": "^1.11.1",
     "element-plus": "^2.0.2",

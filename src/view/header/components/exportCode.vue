@@ -35,7 +35,7 @@
 <script setup lang="ts" name="export-code">
 import { computed, ref, toRaw } from "vue";
 import Design from "../../../utils/analyze";
-import CodeEditor from "../../../components/codeEditor/index.vue"
+import CodeEditor from "../../../renderers/codeEditor/index.vue"
 import { useStore } from "vuex";
 
 const props = defineProps({
