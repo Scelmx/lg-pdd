@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs } from "@vue/runtime-core";
+import { toRefs } from "vue";
 
 interface Component {
   schema: any;

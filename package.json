@@ -8,7 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "codemirror": "^6.0.1",
+    "codemirror": "5.65.8",
+    "codemirror-editor-vue3": "^2.1.7",
     "dart-sass": "^1.25.0",
     "dayjs": "^1.11.1",
     "element-plus": "^2.0.2",
