@@ -27,14 +27,14 @@
       </template> -->
       
     </el-form>
-    <Codemirror style="height: 100vh; width: 100%; border: 1px solid #000" :value="JSON.stringify(schema.style)" type="add"></Codemirror>
+    <!-- <Codemirror style="height: 100vh; width: 100%; border: 1px solid #000" :value="JSON.stringify(schema.style)" type="add"></Codemirror> -->
   </el-container>
 </template>
 
 <script setup lang="ts">
 import { computed, toRefs } from "vue";
 import { getStyle } from "../mixins/viewIterator";
-import CodeEditor from "@/components/codeEditor.vue";
+// import CodeEditor from "@/components/codeEditor.vue";
 import Rect from "./rect.vue"
 
 const props = defineProps({

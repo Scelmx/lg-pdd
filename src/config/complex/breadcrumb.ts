@@ -14,6 +14,8 @@ export default {
       to: '',
       replace: ''
     }],
+    class: "",
+    style: {},
     events: []
   }
 }

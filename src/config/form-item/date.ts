@@ -23,8 +23,12 @@ export default {
     checkedInfo: '请选择日期',
     isFormat: false,
     renderTag: {  //最终渲染的节点信息
-      elementUI: 'el-checkboxes'
+      default: "input",
+      elementUI: "el-datetime",
+      isSingle: true,
     },
+    class: "",
+    style: {},
     events: []
   }
 }

@@ -22,6 +22,8 @@ export default {
       label: '名称',
       width: ''
     }],
+    class: "",
+    style: {},
     events: []
   }
 }

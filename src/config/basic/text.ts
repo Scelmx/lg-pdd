@@ -9,8 +9,10 @@ export default {
     href: "",
     renderTag: {
       //最终渲染的节点信息
+      default: 'span',
       elementUI: 'span',
     },
+    class: "",
     style: {
       color: 'green'
     },

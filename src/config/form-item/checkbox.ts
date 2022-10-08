@@ -27,8 +27,12 @@ export default {
     validations: '',
     checkedInfo: '请选择复选框',
     renderTag: {  //最终渲染的节点信息
-      elementUI: 'el-checkboxes'
+      default: "input",
+      elementUI: 'el-checkboxes',
+      isSingle: true,
     },
+    class: "",
+    style: {},
     events: []
   }
 }

@@ -11,8 +11,11 @@ export default {
     validateEvent: false,
     renderTag: {
       //最终渲染的节点信息
-      elementUI: 'el-input',
+      default: 'input',
+      elementUI: 'el-switch',
+      isSingle: true,
     },
+    class: "",
     style: {},
     events: []
   }

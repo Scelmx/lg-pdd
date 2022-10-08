@@ -26,10 +26,13 @@ export default {
     drag: false,
     multiple: false,
     showFileList: true,
-    events: [],
     renderTag: {  //最终渲染的节点信息
-      elementUI: 'el-upload'
+      default: 'input',
+      elementUI: 'el-upload',
+      isSingle: true,
     },
-    style: {}
+    class: "",
+    style: {},
+    events: [],
   }
 }

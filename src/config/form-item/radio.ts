@@ -28,8 +28,12 @@ export default {
     validations: '',
     checkedInfo: '请选择单选框',
     renderTag: {  //最终渲染的节点信息
-      elementUI: 'el-radio'
+      default: "input",
+      elementUI: 'el-radio',
+      isSingle: true,
     },
+    class: "",
+    style: {},
     events: []
   }
 }

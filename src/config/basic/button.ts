@@ -16,6 +16,7 @@ export default {
     icon: "",
     renderTag: {
       //最终渲染的节点信息
+      default: 'button',
       elementUI: 'el-button',
     },
     style: {},

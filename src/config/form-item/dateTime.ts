@@ -29,7 +29,13 @@ export default {
     validations: '',
     checkedInfo: '请选择日期时间',
     isFormat: false,
+    renderTag: {
+      default: "input",
+      elementUI: "el-datetime",
+      isSingle: true,
+    },
+    class: "",
+    style: {},
     events: [],
-    style: {}
   }
 }
