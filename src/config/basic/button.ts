@@ -19,6 +19,7 @@ export default {
       default: 'button',
       elementUI: 'el-button',
     },
+    class: "",
     style: {},
     events: []
   }

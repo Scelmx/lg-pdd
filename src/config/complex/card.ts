@@ -12,6 +12,6 @@ export default {
     class: "",
     style: {},
     chirdren: [],
-    enents: []
+    events: []
   }
 }
