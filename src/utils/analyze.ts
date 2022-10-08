@@ -1,8 +1,10 @@
 import $ from 'gogocode';
-import getConfig from './config';
+import { getConfig, dslToHtml } from './config';
 
 class Design {
   html: string;
+  template: string = "";
+  style: string = "";
   schema: any;
   getCode: any;
   UI: string = 'default';
@@ -18,43 +20,35 @@ class Design {
   public setUI(ui: string): void {
     this.UI = ui;
   }
-  public analyzeDesign(): Design {
-    this.html = this.analys()
-    return this
-  }
-  public analys(schema: any = this.schema): string {
-    let list: any = schema;
-    let html = ""
-
-    if (!Array.isArray(schema)) {
-      list = [schema];
+  public analyzeDesign(): Design | String {
+    let list: any = this.schema;
+    if (!Array.isArray(this.schema)) {
+      list = [this.schema];
     }
     if (!list.length) {
       return "";
     }
-    // for (let i = 0; i < list.length; i++) {
-    //   if (list[i].type === "Group") {
-    //     html += `<div class="${list[i].class}">${this.analys(list[i].layers || [])}</div>`;
-    //   } else if (list[i].type === "Text") {
-    //     html += `<span class="${list[i].class}">${list[i].text || ""}</span>`;
-    //   } else {
-    //     html += `<img class="${list[i].class}" src="${list[i].src || ""}"/>`;
-    //   }
-    // }
+    this.template = this.analys(list)
+    this.style = this.getStyle(list)
+    this.html = dslToHtml(this.style, this.template)
+    return this
+  }
+  public analys(list: any[]): string {
+    let template = ""
     for (let i = 0; i < list.length; i++) {
       const tag = list[i].renderTag[this.UI]
-      if (list[i].renderTag.isSingle) {
-        html += `<${tag} class="${list[i].class}" />`;
+      if (list[i].renderTag.isSingle) { // 单标签逻辑
+        template += `<${tag} class="${list[i].class}" />`;
       } else {
         if (tag === 'input') {
-          html += `<${tag} type="${list[i].type}" class="${list[i].class}">${this.analys(list[i].children || [])}</${tag}>`;
+          template += `<${tag} type="${list[i].type}" class="${list[i].class}">${this.analys(list[i].children || [])}</${tag}>`;
 
         } else {
-          html += `<${tag} class="${list[i].class}">${this.analys(list[i].children || [])}</${tag}>`;
+          template += `<${tag} class="${list[i].class}">${this.analys(list[i].children || [])}</${tag}>`;
         }
       }
     }
-    return html;
+    return template;
   }
 
   public parseToCode(type: string = "html", ui: string = "") {
@@ -65,8 +59,9 @@ class Design {
     }
   }
 
+
   private transferCode(type: string, ui: string) {
-    const aster = $(this.html, {
+    const aster = $(this.template, {
       parseOptions: {
         language: 'html'
       }
@@ -83,6 +78,19 @@ class Design {
       return `<template>${astResult}</template>`
     }
     return astResult
+  }
+
+  private getStyle(list: Array<any>): string {
+    let style = "<style>";
+    for (let i = 0; i < list.length; i++) {
+      const className = list[i].class !== "" ? list[i].class : list[i].name;
+      style += `\n .${className}${JSON.stringify(list[i].style, null, 2)}`
+      if(list[i].children && list[i].children.length > 0) {
+        this.getStyle(list[i].children);
+      }
+    }
+    style += "\n</style>";
+    return style
   }
 }
 
