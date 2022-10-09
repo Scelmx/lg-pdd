@@ -28,7 +28,7 @@
     </el-form>-->
     <Codemirror
       ref="styleCode"
-      :value="JSON.stringify(schema.style, 2, 2)"
+      :value="getStyleStr"
       :options="codeOptions"
       placeholder="测试 placeholder"
       :height="400"
@@ -45,10 +45,10 @@ import Codemirror from "codemirror-editor-vue3";
 import "codemirror/mode/css/css.js";
 import "codemirror/theme/juejin.css";
 
-// 代码自动提示
-import "codemirror/addon/hint/show-hint.css";
-import "codemirror/addon/hint/css-hint.js";
-import "codemirror/addon/hint/show-hint.js";
+// // 代码自动提示
+// import "codemirror/addon/hint/show-hint.css";
+// import "codemirror/addon/hint/css-hint.js";
+// import "codemirror/addon/hint/show-hint.js";
 import Rect from "./rect.vue";
 
 const props = defineProps({
@@ -60,6 +60,13 @@ const props = defineProps({
 });
 
 const { schema } = toRefs(props);
+
+const getStyleStr = computed(() => {
+  const value: string = JSON.stringify(schema.value.style, null, 2);
+  return `.${schema.value.name} ${value?.replaceAll(",", ";") || value}`
+})
+
+
 
 const details: any = computed(() => {
   return getStyle(schema);
@@ -73,11 +80,6 @@ const codeOptions = reactive({
   indentUnit: 4, // 智能缩进单位为4个空格长度
   // foldGutter: true, // 启用行槽中的代码折叠
   styleActiveLine: true, // 显示选中行的样式
-  spellcheck: true,
-  autofocus: true,
-  extraKeys: {
-    "Cmd-S": "save",
-  },
 });
 
 const setDistans = (key: string, value: string) => {};

@@ -12,7 +12,8 @@ export default {
       elementUI: 'span',
     },
     style: {
-      color: 'green'
+      color: 'green',
+      "font-weight": 400,
     },
     events: []
   }
