@@ -6,13 +6,13 @@ export default {
     labelWidth: '',
     staticOptions: [
       {
-        label: '单选一',
+        itemLabel: '单选一',
         value: '0',
         disabled: false,
         border: false
       },
       {
-        label: '单选二',
+        itemLabel: '单选二',
         value: '1',
         disabled: false,
         border: false

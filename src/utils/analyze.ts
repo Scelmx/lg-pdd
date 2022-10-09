@@ -34,17 +34,29 @@ class Design {
     return this
   }
   public analys(list: any[]): string {
+    if (!list || list.length === 0) return '';
     let template = ""
     for (let i = 0; i < list.length; i++) {
       const tag = list[i].renderTag[this.UI]
-      if (list[i].renderTag.isSingle) { // 单标签逻辑
-        template += `<${tag} class="${list[i].class}" />`;
-      } else {
-        if (tag === 'input') {
-          template += `<${tag} type="${list[i].type}" class="${list[i].class}">${this.analys(list[i].children || [])}</${tag}>`;
+      const item = list[i];
+      const { itemLabel, type, class: className, name, value, children, options } = item;
 
+      const nameStr = name || type ? `name="${name || type}"` : "";
+      const typeStr = type && type!== '' ? `type="${type}"` : "";
+      const classStr = className && className !== '' ? `class="${className}"` : "";
+      const valueStr = value ? `value="${value}"` : "";
+      
+      if (list[i].renderTag.isSingle) { // 单标签逻辑
+        template += `
+        <${tag} ${nameStr} ${typeStr} ${classStr} ${valueStr} />`;
+      } else {
+        if (type === 'table') {
+          template += `<table>${this.getTableStr(list[i].columns)}</table>`;
         } else {
-          template += `<${tag} class="${list[i].class}">${this.analys(list[i].children || [])}</${tag}>`;
+          template += `
+          <${tag} ${nameStr} ${typeStr} ${classStr} ${valueStr}>
+            ${ itemLabel || value || this.analys(children) || this.analys(options)}
+          </${tag}>`;
         }
       }
     }
@@ -80,6 +92,11 @@ class Design {
     return astResult
   }
 
+  /**
+   * 生成样式并返回字符串
+   * @param list dslCode
+   * @returns 样式字符串
+   */
   private getStyle(list: Array<any>): string {
     let style = "<style>";
     for (let i = 0; i < list.length; i++) {
@@ -91,6 +108,27 @@ class Design {
     }
     style += "\n</style>";
     return style
+  }
+
+  /**
+   * 生成表格数据结构
+   * @param list 表格columns
+   * @returns 表格字符串
+   */
+  private getTableStr(list: any[]): string {
+    let line = "\n";
+    for (let i = 0; i < list.length; i++) {
+      line += "<tr>\n"
+      for (let j = 0; j < list.length; j++) {
+        if (i === 0) {
+          line += `<th>${list[j].itemLabel}</th>\n`
+        } else {
+          line += `<td>${list[j].value}</td>\n`
+        }
+      }
+      line += "</tr>\n"
+    }
+    return line
   }
 }
 

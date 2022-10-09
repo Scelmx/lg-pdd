@@ -9,16 +9,24 @@ export default {
     placeholder: '请选择',
     options: [
       {
-        label: '选项1',
+        itemLabel: '选项1',
         desc: 'hahahahahha',
         value: '1',
-        children:[]
+        children:[],
+        renderTag: {
+          default: 'option',
+          elementUI: 'el-option'
+        }
       },
       {
-        label: '选项2',
+        itemLabel: '选项2',
         value: '2',
         desc: 'jiajiajiajia',
-        children:[]
+        children:[],
+        renderTag: {
+          default: 'option',
+          elementUI: 'el-option'
+        }
       }
     ],
     'no-data-text': '无数据',
@@ -50,9 +58,8 @@ export default {
     labelKey: 'label',
     valueType: 'string',
     renderTag: {  //最终渲染的节点信息
-      default: "input",
+      default: "select",
       elementUI: 'el-select',
-      isSingle: true,
     },
     class: "",
     style: {

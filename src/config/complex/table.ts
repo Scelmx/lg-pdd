@@ -10,18 +10,19 @@ export default {
     showHeader: '',
     highlightCurrentRow: '',
     emptyText: '',
-    renderTag: {  //最终渲染的节点信息
-      elementUI: 'el-nav'
-    },
     columns: [{
       value: 'id',
-      label: 'id',
+      itemLabel: 'id',
       width: ''
     }, {
       value: 'name',
-      label: '名称',
+      itemLabel: '名称',
       width: ''
     }],
+    renderTag: {  //最终渲染的节点信息
+      default: 'table',
+      elementUI: 'el-table'
+    },
     class: "",
     style: {},
     events: []
