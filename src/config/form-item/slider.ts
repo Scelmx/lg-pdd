@@ -9,12 +9,15 @@ export default {
     record: [],
     hiddenOn:'',
     labelTips: '',
+    
+    renderTag: {  //最终渲染的节点信息
+      default: 'div',
+      elementUI: 'el-slider'
+    },
+    class: "",
     style: {
       width: '50px',
-      height: '50px'
-    },
-    renderTag: {  //最终渲染的节点信息
-      elementUI: 'el-slider'
+      height: '1px'
     },
     events: []
   }

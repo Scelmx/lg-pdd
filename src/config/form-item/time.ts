@@ -23,8 +23,12 @@ export default {
     checkedInfo: '请选择时间',
     isFormat: false,
     renderTag: {  //最终渲染的节点信息
-      elementUI: 'el-timepicker'
+      default: 'input',
+      elementUI: 'el-timepicker',
+      isSingle: true,
     },
+    class: "",
+    style: {},
     events: []
   }
 }

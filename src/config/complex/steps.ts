@@ -21,6 +21,8 @@ export default {
       icon: '',
       description: '第二步描述'
     }],
+    class: "",
+    style: {},
     events: []
   }
 }

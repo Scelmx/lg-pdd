@@ -27,8 +27,11 @@ export default {
     validateEvent: false,
     renderTag: {
       //最终渲染的节点信息
+      default: "input",
       elementUI: 'el-input',
+      isSingle: true,
     },
+    class: "",
     style: {},
     events: []
   }

@@ -9,7 +9,7 @@
       <el-button type="primary" @click="preview">预览</el-button>
       <el-button type="primary" @click="setExportStatus">导出代码</el-button>
     </div>
-    <ExportCode :visible="exportVisible" @close="setExportStatus"></ExportCode>
+    <ExportCode v-if="exportVisible" :visible="exportVisible" @close="setExportStatus"></ExportCode>
   </el-header>
 </template>
 

@@ -41,15 +41,8 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, onMounted, reactive, toRefs } from "vue";
 import { getStyle } from "../mixins/viewIterator";
-import Codemirror from "codemirror-editor-vue3";
-import "codemirror/mode/css/css.js";
-import "codemirror/theme/juejin.css";
-
-// // 代码自动提示
-// import "codemirror/addon/hint/show-hint.css";
-// import "codemirror/addon/hint/css-hint.js";
-// import "codemirror/addon/hint/show-hint.js";
-import Rect from "./rect.vue";
+// import CodeEditor from "@/components/codeEditor.vue";
+import Rect from "./rect.vue"
 
 const props = defineProps({
   schema: {

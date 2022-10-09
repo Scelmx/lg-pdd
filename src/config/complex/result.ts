@@ -9,6 +9,8 @@ export default {
     renderTag: {  //最终渲染的节点信息
       elementUI: 'el-result'
     },
+    class: "",
+    style: {},
     events: []
   }
 }

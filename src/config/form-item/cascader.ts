@@ -42,12 +42,13 @@ export default {
       checkStrictly: false,
     },
     checkedInfo: '请选择级联选择',
-    events: [],
-    style: {
-      width: ''
-    },
     renderTag: {  //最终渲染的节点信息
       elementUI: 'el-cascader'
     },
+    class: "",
+    style: {
+      width: ''
+    },
+    events: []
   }
 }

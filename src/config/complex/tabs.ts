@@ -6,6 +6,8 @@ export default {
       elementUI: 'el-nav'
     },
     children: [],
+    class: "",
+    style: {},
     events: []
   }
 }

@@ -15,11 +15,12 @@ import LeftPanel from "./view/LeftPanel.vue";
 import CenterPanel from "./view/CenterPanel.vue";
 import RightPanel from "./view/right/RightPanel.vue";
 import { ref, toRaw, watch } from "vue";
+import pageConfig from "./config/layout/page" 
 import { useStore } from "vuex";
 
 const rootStore = useStore();
 const schemaStore = toRaw(rootStore.state.schemaStore);
-const schema = ref(schemaStore.schema || { type: "page", name: "page", children: [] });
+const schema = ref(schemaStore.schema || pageConfig.config);
 
 watch(schema.value, (oldVal, newVal) => {
   rootStore.dispatch("setSchema", newVal)

@@ -4,8 +4,11 @@ export default {
       type: 'layout',
       name: 'layout',
       children: [],
-      padding: '0 0 0 0',
-      childMargin: '0 0 0 0', // 会透传给子项
+      class: "",
+      style: {
+        padding: '0 0 0 0',
+        childMargin: '0 0 0 0', // 会透传给子项
+      },
       events: []
     }
   }

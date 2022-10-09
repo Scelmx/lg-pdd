@@ -7,8 +7,11 @@ export default {
     image: '',
     imageSize: '',
     renderTag: {  //最终渲染的节点信息
+      default: 'section',
       elementUI: 'el-empty'
     },
+    class: "",
+    style: {},
     events: []
   }
 }
