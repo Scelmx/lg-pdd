@@ -8,8 +8,9 @@ import result from './result';
 import empty from './empty';
 import breadcrumb from './breadcrumb'
 import carousel from './carousel'
+import dropdown from './dropdown'
 
 export default {
   name: '高级组件',
-  list: [table, pagination, tabs, card, steps, nav, result, empty, breadcrumb, carousel]
+  list: [table, pagination, tabs, card, steps, nav, result, empty, breadcrumb, carousel, dropdown]
 }

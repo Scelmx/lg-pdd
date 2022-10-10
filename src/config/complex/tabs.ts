@@ -3,7 +3,8 @@ export default {
   config: {
     type: 'tabs',
     renderTag: {  //最终渲染的节点信息
-      elementUI: 'el-nav'
+      default: 'ul',
+      elementUI: 'el-tabs'
     },
     children: [],
     class: "",
