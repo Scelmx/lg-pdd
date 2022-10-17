@@ -1,6 +1,16 @@
 <template>
   <div class="lg-item lg-upload">
-    <el-upload></el-upload>
+    <el-upload
+      :action="schema.action"
+      :multiple="schema.multiple"
+      :limit="schema.limit">
+      <el-button type="primary">{{ schema.value }}</el-button>
+      <template v-if="schema.tip !== ''" #tip>
+        <div class="el-upload__tip">
+          {{ schema.tip }}
+        </div>
+      </template>
+    </el-upload>
   </div>
 </template>
 

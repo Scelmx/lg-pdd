@@ -4,6 +4,7 @@ export default {
     type: 'file',
     label: '上传',
     labelWidth: '',
+    value: '上传',
     action: 'http://ued.zuoyebang.cc/mis-square-api/api/upload/file',
     selectButtonText: '选择文件',
     tip: '只能选择图片',

@@ -20,11 +20,19 @@ export default {
     children: [{
       itemLabel: '菜单项1',
       value: '',
-      url: ''
+      url: '',
+      renderTag: {  //最终渲染的节点信息
+        default: 'li',
+        elementUI: 'el-menu-item'
+      },
     }, {
       itemLabel: '菜单项2',
       value: '',
-      url: ''
+      url: '',
+      renderTag: {  //最终渲染的节点信息
+        default: 'li',
+        elementUI: 'el-menu-item'
+      },
     }],
     class: "",
     style: {},

@@ -14,18 +14,26 @@ export default {
       direction: 'horizontal',
       pauseOnHover: true,
       renderTag: { //最终渲染的节点信息
-        default: "div",
+        default: "ul",
         elementUI: 'el-carousel'
       },
-      chirdren: [{
+      children: [{
         name: 'item1',
-        context: 'item1',
-        type: 'text'
+        context: 'http://e.hiphotos.baidu.com/image/pic/item/a1ec08fa513d2697e542494057fbb2fb4316d81e.jpg',
+        tagType: 'img',
+        renderTag: {  //最终渲染的节点信息
+          default: 'li',
+          elementUI: 'el-carousel-item'
+        },
       },
       {
         name: 'item2',
-        context: 'item2',
-        type: 'text'
+        context: 'http://e.hiphotos.baidu.com/image/pic/item/a1ec08fa513d2697e542494057fbb2fb4316d81e.jpg',
+        tagType: 'img',
+        renderTag: {  //最终渲染的节点信息
+          default: 'li',
+          elementUI: 'el-carousel-item'
+        },
       }],
       class: "",
       style: {},

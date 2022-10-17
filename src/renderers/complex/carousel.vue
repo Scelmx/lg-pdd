@@ -13,8 +13,9 @@
     <el-carousel-item
       v-for="(item, index) of schema.children"
       :key="index"
+      :text="item.context"
       >
-        <img v-if="item.type !== 'text'" :src="item.context" />
+        <img v-if="item.tagType !== 'text'" :src="item.context" />
         <span v-else>{{ item.context }}</span>   
     </el-carousel-item>
   </el-carousel>
