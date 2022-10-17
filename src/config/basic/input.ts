@@ -32,7 +32,18 @@ export default {
       isSingle: true,
     },
     class: "",
-    style: {},
-    events: []
+    style: {
+      "max-width": "200px",
+    },
+    events: [
+      {
+        input: {
+          name: 'inputInput'
+        },
+        change: {
+          name: 'inputChange'
+        }
+      }
+    ]
   }
 };

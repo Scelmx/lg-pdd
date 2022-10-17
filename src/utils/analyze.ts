@@ -1,13 +1,19 @@
 import $ from 'gogocode';
-import { getConfig, dslToHtml } from './config';
+import { ScriptConfig, getConfig, dslToHtml } from './config';
+import utils from './utils';
 
 class Design {
   html: string;
   template: string = "";
   style: string = "";
+  script: ScriptConfig = {
+    variable: {},
+    function: ""
+  };
   schema: any;
   getCode: any;
   UI: string = 'default';
+  type: string = 'html';
   constructor(schema: any) {
     this.schema = schema
     this.html = ""
@@ -20,17 +26,18 @@ class Design {
   public setUI(ui: string): void {
     this.UI = ui;
   }
-  public analyzeDesign(): Design | String {
+  public analyzeDesign(type: string): Design {
     let list: any = this.schema;
+    this.type = type;
     if (!Array.isArray(this.schema)) {
       list = [this.schema];
     }
     if (!list.length) {
-      return "";
+      return this;
     }
     this.template = this.analys(list)
-    this.style = this.getStyle(list)
-    this.html = dslToHtml(this.style, this.template)
+    this.getStyleAndScript(list);
+    this.html = dslToHtml(type, this.style, this.template, '');
     return this
   }
   public analys(list: any[]): string {
@@ -44,7 +51,7 @@ class Design {
       const nameStr = name || type ? `name="${name || type}"` : "";
       const typeStr = type && type!== '' ? `type="${type}"` : "";
       const classStr = className && className !== '' ? `class="${className}"` : "";
-      const valueStr = value ? `value="${value}"` : "";
+      const valueStr = value !== '' ? `${value?.match(utils.getDynamicRule()) ? ':' : ''}value="${value}"` : "value = ''";
       
       if (list[i].renderTag.isSingle) { // 单标签逻辑
         template += `
@@ -63,12 +70,13 @@ class Design {
     return template;
   }
 
-  public parseToCode(type: string = "html", ui: string = "") {
-    switch(type) {
-      case "html": return this.html;
-      case "vue": return this.transferCode('vue', ui);
-      case "react": return this.transferCode('react', ui);
-    }
+  public parseToCode(ui: string = "") {
+    // switch(this.type) {
+    //   case "html": return this.html;
+    //   case "vue": return this.transferCode('vue', ui);
+    //   case "react": return this.transferCode('react', ui);
+    // }
+    return this.html;
   }
 
 
@@ -97,17 +105,22 @@ class Design {
    * @param list dslCode
    * @returns 样式字符串
    */
-  private getStyle(list: Array<any>): string {
-    let style = "<style>";
+  private getStyleAndScript(list: Array<any>) {
     for (let i = 0; i < list.length; i++) {
       const className = list[i].class !== "" ? list[i].class : list[i].name;
-      style += `\n .${className}${JSON.stringify(list[i].style, null, 2)}`
+      this.style += `\n .${className} ${JSON.stringify(list[i].style, null, 2)}`;
+      if (list[i].value?.match(utils.getDynamicRule())) {
+        this.script.variable[list[i].value?.match(utils.getDynamicRule())[0]] = ""
+      }
+      for (let item of list[i].events) {
+        this.script.function += `\n function ${item.name} {
+          // 占位
+        }`;
+      }
       if(list[i].children && list[i].children.length > 0) {
-        this.getStyle(list[i].children);
+        this.getStyleAndScript(list[i].children);
       }
     }
-    style += "\n</style>";
-    return style
   }
 
   /**

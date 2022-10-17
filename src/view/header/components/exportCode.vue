@@ -9,17 +9,17 @@
     <div class="draw-content">
       <el-form label-width="40px">
         <el-form-item label="框架">
-          <el-select v-model="exportType">
+          <el-select v-model="exportType" @change="languageChange">
             <el-option label="html" value="html"></el-option>
             <el-option label="vue" value="vue"></el-option>
             <el-option label="react" value="react"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="UI">
-          <el-select v-model="exportUi">
-            <el-option label="无" value=""></el-option>
-            <el-option label="ElementUI" value="elementUI"></el-option>
-            <el-option label="Vant" value="Vant"></el-option>
+          <el-select v-model="exportUi" @change="UIChange">
+            <el-option v-if="exportType === 'html'" label="无" value="default"></el-option>
+            <el-option v-if="exportType === 'vue'" label="ElementUI" value="elementUI"></el-option>
+            <el-option v-if="exportType === 'vue'" label="Vant" value="Vant"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
@@ -50,20 +50,37 @@ const schema = computed(() => {
 });
 const design = new Design(schema.value);
 const exportType = ref("html");
-const exportUi = ref("");
-const code = ref(design.analyzeDesign().getCode(exportType.value));
+const exportUi = ref("default");
+const code = ref(design.analyzeDesign(exportType.value).getCode());
 const options = computed(() => {
   return { language: exportType.value }
 })
 const $emit = defineEmits(["close"]);
 
 const generateCode = () => {
-  const res: string = design.analyzeDesign().getCode(exportType.value, exportUi.value)
+  const res: string = design.analyzeDesign(exportType.value).getCode()
   code.value = res
 }
 
 const download = () => {
   // 请求接口
+}
+
+const languageChange = (val: string) => {
+  exportType.value = val;
+  if (val === 'vue') {
+    exportUi.value = 'elementUI';
+  }
+  if (val === 'html') {
+    exportUi.value = 'default';
+  }
+  design.setUI(exportUi.value);
+  generateCode();
+}
+
+const UIChange = (val: string) => {
+  exportUi.value = val;
+  design.setUI(val);
 }
 
 const initEditor = (codeEditor: any, monaco: any) => {

@@ -4,6 +4,11 @@ interface CodeConfig {
   text: string
 }
 
+export interface ScriptConfig {
+  variable: {},
+  function: string
+}
+
 const vueConfig: CodeConfig = {
   group: '<view class="$_$1">$$$1</view>',
   image: '<image src="@/static/$_$1" class="$_$2" mode="aspectFit"></image>',
@@ -24,7 +29,15 @@ export function getConfig(type: string) {
   }
 }
 
-export function dslToHtml(style: string, body: string): string {
+export function dslToHtml(type: string, style: string, body: string, script: ScriptConfig): string {
+  switch (type) {
+    case 'html': return getHTMLTemp(style, body, script);
+    case 'vue': return getVueTemp(style, body, script);
+    default: return getVueTemp(style, body, script);
+  }
+}
+
+function getHTMLTemp(style: string, body: string, script: ScriptConfig): string {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -33,24 +46,71 @@ export function dslToHtml(style: string, body: string): string {
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Vite App</title>
-        ${style.replaceAll("\"", "").replaceAll(",", ";")}
+        <style>
+          ${style.replaceAll("\"", "").replaceAll(",", ";")}
+        </style>
       </head>
       <body>
         ${body}
       </body>
-    </html>
-`
+      <script>
+        ${ getScript("html", script) }
+      </script>
+    </html>`
 }
 
-export function dslToVue(style: string, body: string): string {
+function getVueTemp(style: string, body: string, script: ScriptConfig): string {
   return `
-  <template>
-    ${body}
-  </template>
+    <template>
+      ${body}
+    </template>
 
-  <script>
-  </script>
+    <script>
+      ${ getScript("vue2", script)}
+    </script>
 
-  ${style.replaceAll("\"", "").replaceAll(",", ";")}
+    <style>
+      ${style.replaceAll("\"", "").replaceAll(",", ";")}
+    </style>
+  `
+}
+
+export function getScript(type: string, script: ScriptConfig): string {
+  let res = "";
+  switch(type) {
+    case 'html': res = getScriptForHTML(script); break;
+    case 'vue2': res =getScriptForVue2(script); break;
+    case 'vue3': res =getScriptForVue3(script); break;
+  }
+  return res;
+}
+
+function getScriptForHTML(script: ScriptConfig) {
+  return script.variable + '\n' + script.function;
+}
+
+function getScriptForVue2(script: ScriptConfig) {
+  const res = `
+  export default class test {
+    created () {},
+    data() {
+      return ${script.variable}
+    },
+    method: {
+      ${script.function}
+    }
+  }
 `
+  return res;
+}
+
+function getScriptForVue3(script: ScriptConfig) {
+  const res = `
+    import { ref, reactive } from "vue";
+    // 必然是个对象，注意区分简单变量与对象变量。
+    ${script.variable};
+
+    ${script.function};
+  `
+  return res;
 }
