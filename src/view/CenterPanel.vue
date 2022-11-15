@@ -87,7 +87,7 @@ const dragOptions = computed(() => {
 .lg-design__center {
   flex: 1;
   height: 100%;
-  background: #ccc;
+  background: #f0f2f5;
 }
 /* .lg-page .lg-item */
 .lg-canvas .lg-item {

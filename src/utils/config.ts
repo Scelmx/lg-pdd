@@ -5,7 +5,7 @@ interface CodeConfig {
 }
 
 export interface ScriptConfig {
-  variable: {},
+  variable: any,
   function: string
 }
 
@@ -79,14 +79,27 @@ export function getScript(type: string, script: ScriptConfig): string {
   let res = "";
   switch(type) {
     case 'html': res = getScriptForHTML(script); break;
-    case 'vue2': res =getScriptForVue2(script); break;
-    case 'vue3': res =getScriptForVue3(script); break;
+    case 'vue2': res = getScriptForVue2(script); break;
+    case 'vue3': res = getScriptForVue3(script); break;
   }
   return res;
 }
 
 function getScriptForHTML(script: ScriptConfig) {
-  return script.variable + '\n' + script.function;
+  let varStr = ''
+  for (const key of Object.keys(script.variable)) {
+    let value = script.variable[key];
+    try {
+      if (value && (value.length || Object.keys(value).length)) {
+      } else {
+        value =  '\"\"';
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+    varStr += `let ${key} = ${value};\n`
+  }
+  return varStr + '\n' + script.function;
 }
 
 function getScriptForVue2(script: ScriptConfig) {
@@ -94,7 +107,7 @@ function getScriptForVue2(script: ScriptConfig) {
   export default class test {
     created () {},
     data() {
-      return ${script.variable}
+      return ${JSON.stringify(script.variable)}
     },
     method: {
       ${script.function}

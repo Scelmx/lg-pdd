@@ -1,5 +1,5 @@
 <template>
-  <DragRenderer :attrs="attrs" :schema="schema"></DragRenderer>
+  <DragRenderer :attrs="attrs" :schema="schemaConfig"></DragRenderer>
 </template>
 
 <script setup lang="ts">
@@ -14,8 +14,11 @@ const props = defineProps<Component>();
 
 const { schema } = toRefs(props)
 
-schema.value.children.map((child: any) => {
-  child.isFormItem = true
+const schemaConfig = computed(() => {
+  schema.value.children.map((child: any) => {
+    child.isFormItem = true
+  })
+  return schema;
 })
 
 const attrs = reactive({ tag: "el-form", className: "lg-form lg-container" });
